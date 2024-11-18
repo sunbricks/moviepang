@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemDAO">
+	<resultMap type="memdto" id="mem">
+		<id property="mem_id" column="MEM_ID" />
+		<result property="mem_pwd" column="MEM_PWD" />
+		<result property="mem_nm" column="MEM_NM" />
+		<result property="mem_em" column="MEM_EM" />
+		<result property="mem_tel" column="MEM_TEL" />
+		<result property="mem_jd" column="MEM_JD" />
+		<result property="mem_st" column="MEM_ST" />
+		<result property="mem_mp" column="MEM_MP" />
+		<result property="mem_gen" column="MEM_GEN" />
+		<result property="mem_bir" column="MEM_BIR" />
+		<result property="mem_lea" column="MEM_LEA" />
+	</resultMap>
+	
+	
+<!-- 대시보드 회원 시작 -->
+
+<!-- 전체 회원수 카운트 -->
+	<select id="getMemAllCnt" resultType="_int">
+	      SELECT COUNT(*) FROM MEMBER
+	</select>
+   	
+   	
+	<!-- 주간 회원가입수 카운트  -->
+   	<select id="getMemWeekCnt" resultType="_int">
+   <![CDATA[
+	   SELECT 
+	       COUNT(*)
+	   FROM 
+	       MEMBER
+	   WHERE 
+	       MEM_JD >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) + 1 DAY)
+	       AND MEM_JD < DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) + 1 DAY), INTERVAL 1 WEEK)]]>
+   </select>
+   	
+	<!-- 월간 회원가입수 카운트 -->
+	<select id="getMemMonthCnt" resultType="int">
+    <![CDATA[
+	    SELECT 
+	        COUNT(*) 
+	    FROM 
+	        MEMBER
+	    WHERE 
+	        MEM_JD >= DATE_FORMAT(CURDATE(), '%Y-%m-01') 
+	        AND MEM_JD < DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), '%Y-%m-01')]]>
+	</select>
+	
+
+<!--    	<select id="getMemMonthCnt" resultType="int"> -->
+<!-- 	    SELECT  -->
+<!-- 	    	COUNT(*)  -->
+<!-- 	    FROM  -->
+<!-- 	    	MEMBER -->
+<!-- 	    WHERE  -->
+<!-- 	        MEM_JD >= DATE_FORMAT(CURDATE(), '%Y-%m-01') AND MEM_JD &lt; DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), '%Y-%m-01') -->
+<!-- 	</select> -->
+
+	<!-- 연간 회원가입수 카운트 -->
+	<select id="getMemYearCnt" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE YEAR(MEM_JD) = YEAR(CURDATE());
+	</select>
+	
+	
+<!-- 대시보드 회원 끝 -->
+
+
+	<insert id="insertMem">
+		INSERT INTO MEMBER (MEM_ID, MEM_PWD, MEM_NM, MEM_EM,
+		MEM_TEL, MEM_GEN, MEM_BIR ) VALUES(#{mem_id}, #{mem_pwd}, #{mem_nm},
+		#{mem_em}, #{mem_tel}, #{mem_gen}, #{mem_bir} )
+	</insert>
+
+	<update id="leaveMem">
+		UPDATE MEMBER
+		SET MEM_ST = 'Disabled',
+		MEM_LEA = CURRENT_TIMESTAMP
+		WHERE MEM_ID = #{mem_id}
+	</update>
+	
+	<update id="updateTel" parameterType="java.util.Map"> UPDATE MEMBER SET MEM_TEL = #{mem_tel} WHERE MEM_ID = #{mem_id} </update>
+	<update id="updateEmail" parameterType="java.util.Map"> UPDATE MEMBER SET MEM_EM = #{mem_em} WHERE MEM_ID = #{mem_id} </update>
+	
+
+	<select id="getUser" resultType="memdto">
+		SELECT * FROM MEMBER WHERE
+		MEM_ID = #{mem_id} AND (MEM_ST = 'ACTIVE' OR MEM_ST = 'admin')
+	</select>
+
+	<update id="updatePoint">
+		UPDATE MEMBER SET mem_mp = #{mem_mp} WHERE mem_id = #{mem_id};
+	</update>
+
+	<select id="checkId" parameterType="String" resultType="int">
+		SELECT
+		COUNT(*) FROM MEMBER WHERE MEM_ID = #{mem_id}
+	</select>
+
+	<select id="getMemberList" resultType="memdto">
+		SELECT * FROM MEMBER WHERE
+		MEM_ST != 'admin'
+	</select>
+
+	<select id="getMemberInfo" resultType="memdto">
+		SELECT * FROM MEMBER WHERE
+		MEM_ID = #{mem_id}
+	</select>
+
+	<select id="searchMember" resultType="memdto"
+		parameterType="java.util.Map">
+		SELECT * FROM MEMBER
+		<where>
+			<if test="option != null and option != ''">
+				<choose>
+					<when test="option == 'mem_id'">
+						AND mem_id LIKE CONCAT('%', #{value}, '%')
+					</when>
+					<when test="option == 'mem_nm'">
+						AND mem_nm LIKE CONCAT('%', #{value}, '%')
+					</when>
+					<when test="option == 'mem_bir'">
+						AND mem_bir LIKE CONCAT('%', #{value}, '%')
+					</when>
+					<when test="option == 'mem_tel'">
+						AND mem_tel LIKE CONCAT('%', #{value}, '%')
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+
+	<select id="findId" parameterType="java.util.Map"
+		resultType="String">
+		SELECT MEM_ID
+		FROM MEMBER
+		WHERE MEM_NM = #{memNm}
+		AND MEM_BIR
+		= #{memBir}
+		AND MEM_TEL = #{memTel}
+	</select>
+
+	<select id="isValidTel" resultType="boolean"
+		parameterType="java.util.Map">
+		SELECT COUNT(*) FROM MEMBER WHERE mem_id = #{memId} AND
+		mem_nm = #{memNm}
+		AND mem_tel = #{memTel}
+	</select>
+
+	<select id="findPwd" resultType="memdto">
+		SELECT * FROM MEMBER WHERE
+		mem_id = #{memId} AND mem_nm = #{memNm} AND
+		mem_tel = #{memTel}
+	</select>
+
+
+	<update id="updatePwd">
+		UPDATE MEMBER SET MEM_PWD = #{mem_pwd} WHERE MEM_ID =
+		#{mem_id}
+	</update>
+	
+	<select id="getPrdState" resultType="String"> SELECT STATE FROM GIFT WHERE PRD_SERIAL = #{prd_serial} </select>
+	
+	<select id="getPrdName" resultType="String"> SELECT PRD_NAME FROM GIFT WHERE PRD_SERIAL = #{prd_serial} </select>
+	
+	<select id="getPrdPrice" resultType="String"> SELECT prd_price FROM GIFT WHERE PRD_SERIAL = #{prd_serial} </select>
+	
+	<update id="chargePoints"> UPDATE MEMBER SET MEM_MP = #{mem_mp} WHERE MEM_ID = #{mem_id} </update>
+	
+	<update id="updatePrdState"> UPDATE GIFT SET STATE = '사용완료' WHERE PRD_SERIAL = #{prd_serial} </update>	
+	
+	<select id="selectEncPw" resultType="String"> SELECT MEM_PWD FROM MEMBER WHERE MEM_ID = #{mem_id} </select>
+<update id="changePwd"> UPDATE MEMBER SET MEM_PWD = #{mem_chpwd} WHERE MEM_ID = #{mem_id} </update>
+</mapper>

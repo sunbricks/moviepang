@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+a {
+	display: inline-block; 
+	padding:10px 20px; 
+	border: 1px solid #777; 
+	border-radius:5px; 
+	text-decoration: none;
+	background-color:#50b1d9;
+	color: #fff;
+}
+
+a:hover , a:active {
+	background-color: red;
+	color: #fff;
+}

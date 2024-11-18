@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BillDAO">
+	<resultMap type="billdto" id="bill">
+		<id property="bill_num" column="BILL_NUM" /> 
+		<result property="bill_prd_id" column="BILL_PRD_ID" />
+		<result property="bill_prd_num" column="BILL_PRD_NUM" />
+		<result property="bill_prd_name" column="BILL_PRD_NAME" />
+		<result property="bill_cst_name" column="BILL_CST_NAME" />
+		<result property="bill_cst_tel" column="BILL_CST_TEL" />
+		<result property="bill_method" column="BILL_METHOD" />
+		<result property="bill_date" column="BILL_DATE" />
+		<result property="bill_price" column="BILL_PRICE"/>
+		<result property="bill_status" column="BILL_STATUS"/>
+
+	</resultMap>
+
+	<select id="bestPrdName" resultType="map">
+		SELECT 
+		   b.bill_prd_name,
+		   p.prd_Img
+		FROM 
+		   bill b
+		JOIN 
+		   product p ON b.bill_prd_num = p.prd_Num
+		GROUP BY 
+		   b.bill_prd_num, b.bill_prd_name, p.prd_Img
+		ORDER BY 
+		   COUNT(b.bill_prd_num) DESC
+		LIMIT 1
+	</select>
+
+
+	<insert id="insertBill">
+		INSERT INTO BILL (BILL_NUM, BILL_ID, BILL_PRD_NUM, BILL_PRD_NAME, BILL_CST_NAME, BILL_CST_TEL, BILL_METHOD, BILL_PRICE) VALUES(#{bill_num},#{bill_id},  #{bill_prd_num}, #{bill_prd_name}, #{bill_cst_name}, #{bill_cst_tel}, #{bill_method}, #{bill_price})
+	</insert>
+	
+	<update id="updateBill">
+		UPDATE BILL SET BILL_STATUS = #{bill_status} WHERE BILL_NUM = #{bill_num}
+	</update>
+	
+	<select id="getBill" resultType="billdto">
+		select * from BILL WHERE BILL_NUM = #{bill_num} 
+	</select>
+	<select id="getBillList" resultType="billdto">
+		select * from BILL WHERE BILL_ID = #{bill_id} ORDER BY bill_num desc; 
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>

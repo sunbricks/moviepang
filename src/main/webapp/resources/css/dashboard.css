@@ -1,0 +1,970 @@
+* {
+    font-family: "Pretendard";
+}
+
+.dash_btn_1 {
+    background-color: inherit;
+    border: 1px solid #666;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#dashboard_con_box {
+    display: flex;
+}
+
+#left_header_box {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    background-color: #000;
+    color: #fff;
+}
+
+.side_menu_box {
+    padding-top: 100px;
+}
+
+.side_menu_box .logo {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+#right_main_box {
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    padding-left: 290px;
+    background-color: #F9F9F9;
+}
+
+.add_btn {
+    background-color: #EB093B;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.modify_btn {
+    background-color: #EB093B;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.confirm_btn {
+    background-color: #999;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete_btn {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.confirm_btn:hover {
+    background-color: #EB093B;
+}
+
+.paging_box {
+    text-align: center;
+}
+
+.page_link {
+    padding: 5px 10px;
+    color: #333;
+    background-color: #e7e7e7;
+    font-size: 16px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.page_link.current_page {
+    color: #fff;
+    background-color: #000;
+    font-weight: bold;
+}
+
+.next_group, .prev_group {
+    padding: 6px 10px;
+    color: #333;
+    background-color: #e7e7e7;
+}
+/* dashboard home 시작 */
+
+.d_pd_box {
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #e5e5e5
+}
+
+.dash_home_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home_left {
+    width: 70%;
+    margin-right: 25px;
+}
+
+.home_right {
+    width: 30%;
+    margin-left: 25px;
+}
+
+.home_left_top {
+    margin-bottom: 50px;
+}
+
+ul.tabs li {
+    text-align: center;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+ul.tabs li.current{
+    background-color: #EB093B;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.current{
+    display: inherit;
+}
+
+ul.date_tabs {
+    display: flex;
+    margin-bottom: 60px;
+}
+
+ul.date_tabs li {
+    text-align: center;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    border-radius: 30px;
+}
+
+ul.date_tabs li.plus{
+    background-color: #000;
+    color: #fff;
+}
+
+.date_tabs_content {
+    display: none;
+}
+
+.date_tabs_content.plus{
+    display: inherit;
+}
+
+.data_list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.data_list li {
+    text-align: center;
+    width: 25%;
+}
+
+.data_list li .real_value {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #777777;
+}
+
+.data_list li .value_txt {
+    font-size: 18px;
+}
+
+.home_left_bot {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    height: 540px;
+}
+
+.home_left_bot .best_txt {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.home_left_bot img {
+    height: 340px;
+    margin-bottom: 10px;
+}
+
+.home_left_bot .best_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.movie_rank_list {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.home_right .movie_rank_title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.home_right table {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.home_right table thead{
+    border-bottom: 1px solid #000;
+}
+
+.home_right thead tr th{
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.home_right td {
+    padding: 22px 0;
+    font-size: 16px;
+}
+
+.home_right table thead th.movie_rank {
+    width: 20%;
+}
+
+.home_right table thead th.movie_name {
+    width: 80%;
+}
+
+/*  dashboard home 끝 */
+
+/* dashboard chart 시작 */
+
+.chart_pd_box {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #e5e5e5
+}
+
+.top_chart {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+#pieChart{
+    width: 30%;
+    margin-right: 20px;
+    height: 500px;
+    font-size: 20px;
+}
+
+#columnChart{
+    width: 70%;
+    margin-left: 20px;
+}
+
+/* dashboard chart 끝 */
+
+
+/* dashboard member 시작 */
+
+.dash_member_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.dash_member_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_member_top .dash_member_title {
+    font-size: 30px;
+}
+
+.dash_member_top form input, .dash_member_top select {
+    padding: 6px 10px;
+}
+
+.dash_member_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_member_list {
+    margin-bottom: 20px;
+}
+
+.dash_member_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_member_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_member_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_member_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+/* dashboard member 끝 */
+
+/* dashboard movie 시작 */
+
+.dash_movie_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.dash_movie_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.dash_movie_top .dash_movie_title {
+    font-size: 30px;
+}
+
+.dash_movie_top form input, .dash_movie_top select {
+    padding: 6px 10px;
+}
+
+.dash_movie_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.movie_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.movie_add_btn_box .movie_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_movie_list {
+    margin-bottom: 20px;
+}
+
+.dash_movie_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_movie_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_movie_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_movie_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dash_movie_paging {
+    text-align: center;
+}
+.dash_movie_paging span {
+    margin: 0 6px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* dashboard movie 끝 */
+
+/* dashboard screen 시작 */
+
+.dash_screen_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.screen_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.screen_add_btn_box .screen_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_screen_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_screen_top .dash_screen_title {
+    font-size: 30px;
+}
+
+.dash_screen_top form input, .dash_screen_top select {
+    padding: 6px 10px;
+}
+
+.dash_screen_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_screen_list {
+    margin-bottom: 20px;
+}
+
+.dash_screen_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_screen_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_screen_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_screen_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dash_screen_paging {
+    text-align: center;
+}
+.dash_screen_paging span {
+    margin: 0 6px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* dashboard screen 끝 */
+
+/* dashboard product 시작 */
+
+.dash_product_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.product_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.product_add_btn_box .product_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_product_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_product_top .dash_product_title {
+    font-size: 30px;
+}
+
+.dash_product_top form input, .dash_product_top select {
+    padding: 6px 10px;
+}
+
+.dash_product_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_product_list {
+    margin-bottom: 20px;
+}
+
+.dash_product_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_product_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_product_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_product_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dash_product_paging {
+    text-align: center;
+}
+.dash_product_paging span {
+    margin: 0 6px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* dashboard product 끝 */
+
+/* dashboard annoboard 시작 */
+
+.dash_annoboard_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.annoboard_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.annoboard_add_btn_box .annoboard_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_annoboard_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_annoboard_top .dash_annoboard_title {
+    font-size: 30px;
+}
+
+.dash_annoboard_top form input, .dash_annoboard_top select {
+    padding: 6px 10px;
+}
+
+.dash_annoboard_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_annoboard_list {
+    margin-bottom: 20px;
+}
+
+.dash_annoboard_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_annoboard_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_annoboard_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_annoboard_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dash_annoboard_paging {
+    text-align: center;
+}
+.dash_annoboard_paging span {
+    margin: 0 6px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* dashboard annoboard 끝 */
+
+
+/* dashboard evboard 시작 */
+
+.dash_evboard_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.evboard_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.evboard_add_btn_box .evboard_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_evboard_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_evboard_top .dash_evboard_title {
+    font-size: 30px;
+}
+
+.dash_evboard_top form input, .dash_evboard_top select {
+    padding: 6px 10px;
+}
+
+.dash_evboard_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_evboard_list ul {
+    display: flex;
+}
+
+.dash_evboard_list .evboard_list {
+    width: 25%;
+    margin-bottom: 20px;
+    margin: 0 5px;
+    background-color: #fff;
+}
+
+.dash_evboard_list .evboard_list:first-child {
+    margin-left: 0px;
+}
+
+.dash_evboard_list .evboard_list:last-child {
+    margin-right: 0px;
+}
+
+.evboard_list .ev_thumnail {
+	width: 100%;
+    height: 200px;
+}
+
+.evboard_list .ev_info_box {
+    background-color: #292929;
+    color: #fff;
+    padding: 20px;
+}
+.evboard_list .ev_info_box .ev_title {
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.evboard_list .ev_info_box .ev_status {
+    margin-bottom: 10px;
+}
+
+/* dashboard evboard 끝 */
+
+/* dashboard pre_coupon 시작 */
+
+.dash_pre_coupon_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.pre_coupon_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.pre_coupon_add_btn_box .pre_coupon_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_pre_coupon_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_pre_coupon_top .dash_pre_coupon_title {
+    font-size: 30px;
+}
+
+.dash_pre_coupon_top form input, .dash_pre_coupon_top select {
+    padding: 6px 10px;
+}
+
+.dash_pre_coupon_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_pre_coupon_list {
+    margin-bottom: 20px;
+}
+
+.dash_pre_coupon_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_pre_coupon_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_pre_coupon_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_pre_coupon_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dash_pre_coupon_paging {
+    text-align: center;
+}
+.dash_pre_coupon_paging span {
+    margin: 0 6px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* dashboard pre_coupon 끝 */
+
+/* dashboard user_coupon 시작 */
+
+.dash_user_coupon_box {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 150px 200px;
+}
+
+.user_coupon_add_btn_box {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.user_coupon_add_btn_box .user_coupon_add_btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.dash_user_coupon_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dash_user_coupon_top .dash_user_coupon_title {
+    font-size: 30px;
+}
+
+.dash_user_coupon_top form input, .dash_user_coupon_top select {
+    padding: 6px 10px;
+}
+
+.dash_user_coupon_top .search_btn {
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dash_user_coupon_list {
+    margin-bottom: 20px;
+}
+
+.dash_user_coupon_list table {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dash_user_coupon_list table thead {
+    border-bottom: 1px solid #000;
+}
+
+.dash_user_coupon_list table thead th {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.dash_user_coupon_list table tbody td {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dash_user_coupon_paging {
+    text-align: center;
+}
+.dash_user_coupon_paging span {
+    margin: 0 6px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* dashboard user_coupon 끝 */

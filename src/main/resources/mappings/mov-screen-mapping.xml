@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="movScreenDAO">
+
+	<!-- 영화 이름 리스트 가져오기 -->
+<!-- 	<select id="getMovNameList" resultType="movieVO"> -->
+<!-- 		SELECT * FROM MOV_MOVIES -->
+<!-- 		WHERE MOV_ENDDATE >= SYSDATE() -->
+<!-- 	</select> -->
+
+<!-- 영화 이름 리스트 가져오기 -->
+<select id="getMovNameList" resultType="movieVO">
+    <![CDATA[
+        SELECT * FROM MOV_MOVIES
+        WHERE MOV_DATE <= SYSDATE() AND MOV_ENDDATE >= SYSDATE()
+    ]]>
+</select>
+
+	   <!-- 이미 선택된 좌석 정보 가져오기 -->
+   <select id="alearedySelectedSeats" resultType="string"
+      parameterType="TicketVO">
+      select t.tic_RoomSeat from tickets t join payments p on
+      p.pay_ticID=t.tic_ID
+      where t.tic_MovName = #{tic_MovName} AND t.TIC_MovRoom = #{tic_MovRoom} and
+      t.tic_watDate= #{tic_WatDate} and t.tic_watTime = #{tic_WatTime} and t.tic_status = "active";
+   </select>
+
+	<!-- 영화좌석정보 가져오기 -->
+	<select id="getRoomCnt" parameterType="movScreenVO"
+		resultType="java.util.Map">
+		SELECT t.TIC_MovName,
+		t.TIC_MOVROOM,T.TIC_WATDATE,T.TIC_WATTIME,SUM(T.TIC_WATNUM) AS ROOMCNT
+		FROM TICKETS t join payments p on p.pay_ticID=t.tic_ID
+		WHERE t.TIC_MOVNAME = #{mov_sMovieName} AND t.TIC_WATDATE = #{mov_sDate} AND t.tic_status = "active"
+		GROUP BY t.TIC_MOVROOM, t.TIC_WATTIME;
+
+	</select>
+	
+		<!-- 현재 상영정보 가져오기 -->
+    <select id="nowScreened" resultType="com.movie.pang.chart.NowScreenedVO">
+        <![CDATA[SELECT mm.mov_Num, mm.mov_Post,mm.mov_Nm,mm.mov_Con1, NVL(sum(t.tic_WatNum),0) as total 
+        FROM MOV_MOVIES mm left outer join tickets t on mm.mov_Nm = t.tic_movName 
+        WHERE MOV_DATE <= SYSDATE() AND MOV_ENDDATE >=
+        SYSDATE() Group by mm.mov_Nm 
+        Order By total DESC]]>
+    </select>
+
+	<!-- 상영예정작 가져오기 -->
+	<select id="willScreened" resultType="movieVO">
+		<![CDATA[SELECT * FROM MOV_MOVIES
+		WHERE MOV_DATE >= SYSDATE()]]>
+	</select>
+
+
+	<select id="findMovScreenList" resultType="movScreenVO"
+		parameterType="java.util.Map">
+		SELECT * FROM MOV_SCREEN
+		<where>
+			<if test="condition != null and option != ''">
+
+				<choose>
+					<when test="condition == 'mov_sMovieName'">
+						AND MOV_SMOVIENAME LIKE CONCAT('%',#{value},'%')AND MOV_SDATE >= SYSDATE() ORDER BY MOV_SNUM DESC
+					</when>
+					<when test="condition == 'mov_sName'">
+						AND MOV_SNAME LIKE CONCAT('%',#{value},'%')AND MOV_SDATE >= SYSDATE() ORDER BY MOV_SNUM DESC
+					</when>
+					<when test="condition == 'mov_sDate'">
+						AND MOV_SDATE LIKE CONCAT('%',#{value},'%') AND MOV_SDATE >= SYSDATE() ORDER BY MOV_SNUM DESC
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+
+	<select id="getMovInfo" parameterType="movScreenVO"
+		resultType="movieVO">
+		SELECT * FROM MOV_MOVIES WHERE MOV_NM = #{mov_sMovieName}
+	</select>
+
+	<select id="selectMovScreenList" resultType="movScreenVO">
+		<![CDATA[SELECT * FROM
+		MOV_SCREEN WHERE  MOV_SDATE >= SYSDATE() ORDER BY MOV_SNUM DESC]]>
+	</select>
+
+	<select id="findMovScreenDate" resultType="string">
+		SELECT
+		DISTINCT(MOV_SDATE) FROM MOV_SCREEN WHERE MOV_SMOVIENAME =
+		#{mov_sMovieName}
+	</select>
+
+	<select id="findMovScreenTime" parameterType="movScreenVO"
+		resultType="movScreenVO">
+		SELECT * FROM MOV_SCREEN WHERE MOV_SMOVIENAME =
+		#{mov_sMovieName} AND MOV_SDATE = #{mov_sDate} order by MOV_sName,mov_sTime
+	</select>
+
+	<select id="getRoomInfo" parameterType="movScreenVO"
+		resultType="string">
+		SELECT MOV_SNAME FROM MOV_SCREEN WHERE MOV_SMOVIENAME =
+		#{mov_sMovieName}
+		AND MOV_SDATE = #{mov_sDate} AND MOV_STIME=
+		#{mov_sTime}
+	</select>
+
+	<select id="selectMovScreen" resultType="movScreenVO">
+		SELECT * FROM MOV_SCREEN
+		WHERE MOV_SNUM = #{mov_sNum}
+	</select>
+
+
+	<insert id="insertMovScreen" parameterType="movScreenVO">
+		INSERT INTO
+		MOV_SCREEN(MOV_SNAME, MOV_SMOVIENAME, MOV_SDATE, MOV_STIME,
+		MOV_SREGISTDATE) VALUES
+		(#{mov_sName},#{mov_sMovieName},#{mov_sDate},#{mov_sTime},SYSDATE())
+	</insert>
+
+
+	<update id="updateMovScreen">
+		UPDATE MOV_SCREEN
+		SET MOV_SNAME = #{mov_sName},
+		MOV_SMOVIENAME = #{mov_sMovieName},
+		MOV_SDATE = #{mov_sDate},
+		MOV_STIME
+		= #{mov_sTime},
+		MOV_SREGISTDATE = #{mov_sRegistDate}
+		WHERE MOV_SNUM =
+		#{mov_sNum}
+	</update>
+
+
+	<delete id="deleteMovScreeen">
+		DELETE FROM MOV_SCREEN WHERE MOV_SNUM = #{mov_sNum}
+	</delete>
+	
+	    <select id="recommendedMov" resultType="com.movie.pang.chart.NowScreenedVO">
+        <![CDATA[
+		SELECT 
+		    mm.mov_Num, 
+		    mm.mov_Post, 
+		    mm.mov_Nm, 
+		    mm.mov_Con1, 
+		    NVL(SUM(t.tic_WatNum), 0) AS total,
+		    AVG(r.REVIEW_RERATE) AS avg_rating
+		FROM 
+		    MOV_MOVIES mm
+		JOIN 
+		    TICKETS t ON mm.MOV_NM = t.TIC_MovName
+		JOIN 
+		    REVIEWS r ON t.TIC_MovName = r.REVIEW_NAME
+		WHERE 
+		    mm.MOV_DATE <= SYSDATE() AND mm.MOV_ENDDATE >= SYSDATE()
+		GROUP BY 
+		    mm.mov_Nm
+		ORDER BY 
+		    avg_rating DESC;
+        ]]>
+    </select>
+
+</mapper>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDAO">
+
+   <resultMap type="boardDTO" id="boardList">
+      <id property="bn_num" column="BN_NUM" />
+      <result property="bn_title" column="BN_TITLE" />
+<!--       <result property="bn_type" column="BN_TYPE" /> -->
+      <result property="bn_content" column="BN_CONTENT" />
+   </resultMap>
+
+   <select id="getBoardList" resultMap="boardList">
+      SELECT A.*, ROW_NUMBER() OVER() AS ROWNO FROM BOARD A WHERE 1 = 1 
+      <if test="searchCondition == 'BN_TITLE'"> AND BN_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') </if>
+<!--       <if test="searchCondition == 'BN_CONTENT'"> AND BN_CONTENT LIKE CONCAT('%', #{searchKeyword}, '%') </if> -->
+      ORDER BY ROWNO DESC
+      LIMIT #{start}, #{listCount}
+   </select>
+   
+<!--    공지사항 상세보기 -->
+   <select id="getannounBoard" resultMap="boardList">
+      SELECT * FROM BOARD WHERE BN_NUM = #{bn_num}
+   </select>
+   
+<!--    화면공지사항 -->
+   <select id="getRecentBoardList" resultMap="boardList">
+      SELECT * FROM board ORDER BY bn_num  DESC LIMIT 4;
+   </select>
+   
+   <select id="getBoardList2" resultMap="boardList">
+      SELECT A.*, ROW_NUMBER() OVER() AS ROWNO FROM BOARD A WHERE 1 = 1 
+      ORDER BY ROWNO DESC
+   </select>
+   
+   <select id="getTotalListCnt" resultType="_int">
+      SELECT count(*) FROM BOARD WHERE 1 = 1 
+      <if test="searchCondition == 'BN_TITLE'"> AND BN_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') </if>
+      <if test="searchCondition == 'BN_CONTENT'"> AND BN_CONTENT LIKE CONCAT('%', #{searchKeyword}, '%') </if>
+   </select>
+
+   <select id="getBoard" resultType="com.movie.pang.board.BoardVO">
+      SELECT * FROM BOARD WHERE BN_NUM = #{bn_num}
+   </select>
+
+   <insert id="insertBoard">
+      INSERT INTO BOARD(BN_TITLE, BN_CONTENT) VALUES(#{bn_title}, #{bn_content} )
+   </insert>
+
+   <update id="updateBoard">
+      UPDATE BOARD SET BN_TITLE = #{bn_title}, BN_CONTENT = #{bn_content} WHERE BN_NUM = #{bn_num}
+   </update>
+
+   <delete id="deleteBoard">
+      DELETE FROM BOARD WHERE BN_NUM = #{bn_num}
+   </delete>
+
+
+<select id="getBoardList1" resultType="com.movie.pang.board.BoardVO" parameterType="java.util.Map">
+    SELECT * FROM BOARD
+    <where>
+        <if test="option != null and option != ''">
+            <choose>
+                <when test="option == 'bn_title'">
+                    AND BN_TITLE LIKE CONCAT('%', #{value}, '%')
+                </when>
+                <when test="option == 'bn_content'">
+                    AND BN_CONTENT LIKE CONCAT('%', #{value}, '%')
+                </when>
+            </choose>
+        </if>
+    </where>
+</select>
+
+</mapper>

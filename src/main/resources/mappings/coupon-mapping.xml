@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CouponDAO">
+   <resultMap id="couponList" type="couponDTO">
+      <id property="cup_num" column="CUP_NUM" />
+      <result property="cup_sdate" column="CUP_SDATE" />
+      <result property="cup_edate" column="CUP_EDATE" />
+      <result property="cup_fdate" column="CUP_FDATE" />
+      <result property="cup_user" column="CUP_USER" />
+      <result property="cup_contents" column="CUP_CONTENTS" />
+      <result property="cup_dc" column="CUP_DC" />
+      <result property="cup_type" column="CUP_TYPE" />
+      <result property="cup_tf" column="CUP_TF" />
+   </resultMap>
+
+   <!-- 쿠폰 리스트 -->
+   <select id="getCouponList" resultMap="couponList">
+      SELECT * FROM COUPON WHERE CUP_TYPE = '쿠폰';
+      <!-- <if test="searchCondition == 'CUP_TYPE'"> AND CUP_TYPE LIKE CONCAT('%', 
+         #{searchKeyword}, '%') </if> -->
+      <!-- LIMIT #{start}, #{listCount} -->
+   </select>
+   <select id="getCouponUserList" resultMap="couponList">
+      SELECT * FROM COUPON_USER WHERE 1=1;
+      <!-- <if test="searchCondition == 'CUP_TYPE'"> AND CUP_TYPE LIKE CONCAT('%', 
+         #{searchKeyword}, '%') </if> -->
+      <!-- LIMIT #{start}, #{listCount} -->
+   </select>
+   
+   <select id="getPreCouponList" resultMap="couponList">
+      SELECT * FROM COUPON WHERE 1=1;
+   </select>
+   
+   
+
+   <!-- 쿠폰 카운터 -->
+   <select id="getTotalListCnt" resultType="_int">
+      SELECT count(*) FROM COUPON WHERE 1 = 1
+      <!-- <if test="searchCondition == 'CUP_TYPE'"> AND CUP_TYPE LIKE CONCAT('%', 
+         #{searchKeyword}, '%') </if> -->
+   </select>
+
+   <!-- 쿠폰 상세보기 -->
+   <select id="getCoupon"
+      resultType="couponDTO">
+      SELECT * FROM COUPON WHERE CUP_NUM = #{cup_num}
+   </select>
+   
+   
+   
+   <!-- 쿠폰 상세보기 -->
+   <select id="getallCoupon" resultMap="couponList">
+    SELECT * FROM COUPON_USER WHERE CUP_NUM = #{cup_num}
+<!--     SELECT * FROM COUPON_USER WHERE CUP_NUM = 'c3e5bc78' -->
+   </select>
+   
+
+   <!-- 쿠폰 종류 등록 -->
+   <insert id="insertCoupon">
+      INSERT INTO COUPON (CUP_NUM, CUP_SDATE, CUP_EDATE,
+      CUP_CONTENTS, CUP_DC, CUP_TYPE)
+      VALUES
+      (SUBSTRING(REPLACE(UUID(), '-', ''), 1, 8), #{cup_sdate},
+      #{cup_edate}, #{cup_contents}, #{cup_dc}, #{cup_type})
+   </insert>
+
+   <!-- 쿠폰 다운받은 사용자(user) 정보 등록 -->
+   <insert id="insertCoupon1">
+      INSERT INTO COUPON_USER (CUP_NUM, CUP_SDATE,
+      CUP_EDATE,
+      CUP_CONTENTS,CUP_USER, CUP_DC, CUP_TYPE)
+      VALUES (#{cup_num},
+      #{cup_sdate}, #{cup_edate}, #{cup_contents},
+      #{cup_user}, #{cup_dc},
+      #{cup_type})
+   </insert>
+	
+   <!-- 사용자 쿠폰 개수 가져오기 -->
+   <select id="couponcount" resultType="_int">
+      SELECT count(*) FROM COUPON_USER WHERE CUP_USER = #{mem_Id} AND CUP_TF = "미사용";
+   </select>
+
+   <!-- 사용자 아이디 쿠폰보기 -->
+   <select id="getCouponList1" resultMap="couponList">
+      SELECT * FROM COUPON_USER
+      WHERE CUP_USER = #{mem_Id} AND CUP_TF = "미사용";
+   </select>
+   
+   <!-- 사용한 쿠폰 보기 -->
+   <select id="getCouponList2" resultMap="couponList">
+      SELECT * FROM COUPON_USER
+      WHERE CUP_USER = #{mem_Id} AND CUP_TF = "사용";
+   </select>
+   
+	<!-- 쿠폰 사용시 업데이트 -->
+    <update id="updateCoupon1">
+		UPDATE COUPON_USER
+		SET CUP_TF = "사용", CUP_FDATE = #{cup_fdate}
+		WHERE CUP_NUM = #{cup_num} AND CUP_USER = #{cup_user};
+	</update>
+	
+<!-- 	기간 만료시 업데이트 -->
+    <update id="updateCoupon2">
+		UPDATE COUPON_USER
+		SET CUP_TF = "기간만료", CUP_FDATE = #{cup_fdate}
+		WHERE CUP_NUM = #{cup_num} AND CUP_USER = #{cup_user};
+	</update>
+
+
+
+   <!-- 쿠폰 다운로드 받았는지 안받았는지 확인 -->
+   <select id="countDownCoupon" resultType="_int">
+      SELECT COUNT(*) CNT FROM
+      MOVIE.COUPON_USER WHERE CUP_USER = #{cup_user} AND
+      CUP_NUM =
+      #{cup_num};
+   </select>
+
+     <!-- 쿠폰 수정 -->
+   <update id="updateCoupon">
+      UPDATE COUPON
+      SET CUP_EDATE = #{cup_edate}, CUP_CONTENTS = #{cup_contents},
+      CUP_DC = #{cup_dc}, CUP_TYPE = #{cup_type}
+      WHERE CUP_NUM = #{cup_num}
+   </update>
+
+   <select id="getCoupon1" resultMap="couponList">
+	    SELECT * FROM COUPON 
+	    WHERE CUP_TYPE = '회원가입쿠폰' 
+	    AND cup_edate >= CURRENT_DATE;
+	</select>
+   
+   
+<select id="searchCoupon" resultType="couponDTO" parameterType="java.util.Map">
+      SELECT * FROM COUPON_USER 
+      <where>
+         <if test="option != null">
+            <choose>
+             <when test="option == '전체'">
+               </when>
+               <when test="option == '사용'">
+                  AND CUP_TF = #{option}
+               </when>
+               <when test="option == '미사용'">
+                  AND CUP_TF = #{option}
+               </when>
+            </choose>
+         </if>
+      </where>
+   </select>
+   
+   <!-- 사용자가 다운로드한 쿠폰 목록 가져오기 -->
+    <select id="getDownloadedCoupons" parameterType="string" resultType="string">
+        SELECT CUP_NUM
+        FROM COUPON_USER
+        WHERE CUP_USER = #{memId}
+    </select>
+</mapper>

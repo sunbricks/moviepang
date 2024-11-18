@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ticketDAO">
+
+	<!-- 관리자 대시보드 시작 -->
+	
+	<select id="getUseMemWeekCnt" resultType="_int">
+	SELECT COALESCE(SUM(TIC_watNum), 0)
+	FROM tickets
+	WHERE TIC_watDate >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY)
+	  AND TIC_watDate > DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 7 DAY)
+	  AND TIC_Status = 'active'
+	</select>
+	
+	
+	<select id="getUseMemMonthCnt" resultType="_int">
+	SELECT COALESCE(SUM(TIC_watNum), 0)
+	FROM tickets
+	WHERE TIC_watDate >= DATE_FORMAT(CURDATE(), '%Y-%m-01')
+	  AND TIC_watDate >= LAST_DAY(CURDATE())
+	  AND TIC_Status = 'active'
+	</select>
+	
+	<select id="getUseMemYearCnt" resultType="_int">
+	<![CDATA[
+		SELECT COALESCE(SUM(TIC_watNum), 0)
+		FROM tickets
+		WHERE TIC_watDate >= DATE_FORMAT(CURDATE(), '%Y-01-01')
+	  AND TIC_watDate <= DATE_FORMAT(CURDATE(), '%Y-12-31')
+	  AND TIC_Status = 'active']]>
+	</select>
+	
+	<!--   관리자 대시보드 끝 -->
+	
+	<!-- 쿠폰 정보 가져오기 -->
+	<select id="findCoupon" parameterType="memdto"
+		resultType="couponDTO">
+		SELECT * FROM COUPON_USER WHERE CUP_USER = (SELECT MEM_ID
+		FROM MEMBER WHERE
+		MEM_NM = #{mem_nm} AND MEM_TEL = #{mem_tel}) AND
+		CUP_TF = "미사용"
+	</select>
+
+	<!-- 마이포인트 정보 가져오기 -->
+	<select id="findMyPoint" parameterType="memdto"
+		resultType="_int">
+		SELECT MEM_MP FROM MEMBER WHERE MEM_NM = #{mem_nm} and
+		MEM_TEL = #{mem_tel}
+	</select>
+
+	<!-- 좌석 정보 가져오기 -->
+	<select id="selectSeat" parameterType="ticketVO"
+		resultType="movRoomVO">
+		SELECT *
+		FROM MOV_ROOM
+		WHERE MOV_RNAME = #{tic_MovRoom}
+	</select>
+
+	<!-- 순서에서 맨 마지막 값 받아오기 -->
+	<select id="getTicNum" resultType="_int">
+		SELECT NVL(MAX(TIC_NUM),0)
+		FROM TICKETS;
+	</select>
+
+	<!-- 영화 번호 가져오기 -->
+	<select id="getMovNum" resultType="_int"
+		parameterType="ticketVO">
+		SELECT MOV_NUM
+		FROM MOV_MOVIES WHERE MOV_NM = #{tic_MovName}
+	</select>
+
+
+	<!-- 예매 정보 등록 -->
+	<insert id="insertTicket">
+		INSERT INTO TICKETS
+		VALUES(#{tic_Num},#{tic_Id},#{tic_MemName},#{tic_MemId},#{tic_MovName},#{tic_MovRT},#{tic_MovRate},#{tic_MovGenre},#{tic_MovRoom},#{tic_WatDate},#{tic_WatTime},#{tic_WatNum},#{tic_RoomSeat},#{tic_SeatType},#{tic_Price},'active',#{tic_CancledDate})
+	</insert>
+
+	<select id="getTicketList" resultType="ticketVO">
+		SELECT * FROM TICKETS WHERE 1=1
+		<if test="searchCondition == 'TIC_NAME' "> AND TIC_NAME LIKE CONCAT ('%',#{searchKeyword},'%') </if>
+		<!-- <if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE CONCAT 
+			('%',#{searchKeyword},'%') </if> -->
+		<!-- ORDER BY MOV_NUM DESC -->
+	</select>
+
+
+	<select id="getTicketMypage" parameterType="ticketVO"
+		resultType="com.movie.pang.chart.AlreadyTicketVO">
+	<![CDATA[SELECT t.TIC_Num, t.TIC_ID, t.tic_memName, t.tic_MemId, t.TIC_MovName, 
+	t.tic_movRate,t.TIC_MovGenre,t.tic_movRoom,t.TIC_watDate , t.TIC_watTime, t.TIC_watNum ,t.TIC_RoomSeat, 
+	t.TIC_Price, t.tic_status, mm.MOV_POST  
+	FROM TICKETS t left outer join mov_movies mm on t.TIC_MovName = mm.MOV_NM 
+WHERE t.tic_MemName = #{tic_MemName} AND t.tic_MemId = #{tic_MemId}
+AND t.TIC_WATDATE >= SYSDATE() AND t.TIC_STATUS ="active" ORDER BY t.TIC_WATDATE desc]]>
+	</select>
+
+	<!-- 이미 이용한 티켓 정보 가져오기 -->
+	<select id="getPastTicket" parameterType="ticketVO"
+		resultType="com.movie.pang.chart.AlreadyTicketVO">
+		<![CDATA[SELECT t.TIC_Num, t.TIC_ID, t.tic_memName, t.tic_MemId, t.TIC_MovName, 
+	t.tic_movRate,t.TIC_MovGenre,t.tic_movRoom,t.TIC_watDate , t.TIC_watTime, t.TIC_watNum ,t.TIC_RoomSeat, 
+	t.TIC_Price, t.tic_status, mm.MOV_POST  
+	FROM TICKETS t left outer join mov_movies mm on t.TIC_MovName = mm.MOV_NM 
+WHERE t.tic_MemName = #{tic_MemName} AND t.tic_MemId = #{tic_MemId}
+AND t.TIC_WATDATE < SYSDATE() AND t.TIC_STATUS ="active" ORDER BY t.TIC_WATDATE desc]]>
+	</select>
+
+
+
+	<select id="getTicket" resultType="ticketVO">
+		SELECT * FROM TICKETS WHERE
+		TIC_NUM= #{TIC_Num}
+	</select>
+
+	<select id="getDetailTicket" resultType="ticketVO">
+		SELECT * FROM TICKETS
+	</select>
+
+	<!--예매일 별 구매건 수 계산 -->
+	<select id="findTicketDays" parameterType="java.util.Map"
+		resultType="com.movie.pang.chart.PaymentDateVO">
+	<![CDATA[SELECT PAY_PAYMENTDATE, COUNT(*) AS CNT FROM PAYMENTS WHERE PAY_PAYMENTDATE >= #{startWeek} AND PAY_PAYMENTDATE <= #{endWeek} GROUP BY PAY_PAYMENTDATE]]>
+	</select>
+
+</mapper>

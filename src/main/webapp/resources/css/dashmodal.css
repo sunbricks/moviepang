@@ -1,0 +1,884 @@
+/* modal 시작 */
+
+/* modal 공통 */
+
+.modal_common {
+    position:fixed;
+    display:none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal_body_common {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    width:1000px;
+    height:80%;
+    padding: 60px 40px;
+    text-align: center;
+    background-color: rgb(255,255,255);
+    border-radius:10px;
+    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* member_modal 시작 */
+
+.member_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.member_info_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member_info_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.member_info_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.member_info_modal form .list_name {
+    width: 80px;
+    font-size: 16px;
+}
+
+/* member_modal 끝 */
+
+/* movie_modal 시작 */
+
+.movie_modal_title {
+    font-size: 24px;
+    margin-bottom: 30px;
+} 
+
+.movie_info_modal form {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.movie_info_modal form .form_sort_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.movie_lt_info {
+    width: 45%;
+}
+
+.movie_rt_info {
+    width: 55%;
+}
+
+.movie_lt_info input[type="file"] {
+    display: none;
+}
+
+.movie_lt_info div {
+    text-align: left;
+}
+
+.movie_lt_info img {
+    text-align: left;
+    height: 320px;
+}
+
+.movie_info_modal form .list_sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    width: 100%;
+}
+
+.movie_info_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    outline: none;
+    color: #333;
+}
+
+.movie_info_modal form .list_sort input::placeholder {
+    color: #333;
+}
+
+.movie_info_modal form .list_name {
+    width: 100px;
+    font-size: 16px;
+}
+
+.movie_bt_info {
+    margin-bottom: 20px;
+}
+
+.movie_bt_info .movie_story {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.movie_bt_info textarea {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+/* movie_modal 끝 */
+
+/* movie_modify_modal 시작 */
+
+.movie_modify_modal_title {
+    font-size: 24px;
+    margin-bottom: 30px;
+} 
+
+.movie_modify_modal form {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.movie_modify_modal form .form_sort_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.movie_lt_modify {
+    width: 45%;
+}
+
+.movie_rt_modify {
+    width: 55%;
+}
+
+.movie_lt_modify input[type="file"] {
+    display: none;
+}
+
+.movie_lt_modify div {
+    text-align: center;
+}
+
+.movie_lt_modify img {
+	width: 100%;
+    height: 360px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.movie_modify_modal form .list_sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    width: 100%;
+}
+
+.movie_modify_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    color: #333;
+}
+
+.movie_modify_modal form .list_sort select {
+    width: 200px;
+    padding: 6px;
+    color: #333;
+}
+
+.movie_modify_modal form .list_sort input::placeholder {
+    color: #333;
+}
+
+.movie_modify_modal form .list_name {
+    width: 100px;
+    font-size: 16px;
+}
+
+.movie_bt_modify {
+    margin-bottom: 20px;
+}
+
+.movie_bt_modify .movie_story {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.movie_bt_modify textarea {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+/* movie_modify_modal 끝 */
+
+/* movie_add_modal 시작 */
+
+.movie_add_modal_title {
+    font-size: 24px;
+    margin-bottom: 30px;
+} 
+
+.movie_add_modal form {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.movie_add_modal form .form_sort_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.movie_lt_add {
+    width: 45%;
+}
+
+.movie_rt_add {
+    width: 55%;
+}
+
+.movie_lt_add input[type="file"] {
+    display: none;
+}
+
+.movie_lt_add div {
+    text-align: center;
+}
+
+.movie_lt_add img {
+    height: 360px;
+    margin-bottom: 10px;
+}
+
+ .add_thumnail_btn {
+    text-align: center;
+    display: block;
+    padding: 6px 25px;
+    background-color:#f9f9f9;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+}
+
+.movie_add_modal form .list_sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    width: 100%;
+}
+
+.movie_add_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    color: #333;
+}
+
+.movie_add_modal form .list_sort select {
+    width: 200px;
+    padding: 6px;
+    color: #333;
+}
+
+.movie_add_modal form .list_sort input::placeholder {
+    color: #333;
+}
+
+.movie_add_modal form .list_name {
+    width: 100px;
+    font-size: 16px;
+}
+
+.movie_bt_add {
+    margin-bottom: 20px;
+}
+
+.movie_bt_add .movie_story {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.movie_bt_add textarea {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+/* movie_add_modal 끝 */
+
+/* screen_modify_modal 시작 */
+
+.screen_modify_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.screen_modify_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.screen_modify_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.screen_modify_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.screen_modify_modal form .list_sort select {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.screen_modify_modal form .list_name {
+    width: 120px;
+    font-size: 16px;
+}
+
+.screen_modify_modal form .modal_btn_box {
+    margin-top: 50px;
+}
+
+/* screen_modify_modal 끝 */
+
+/* screen_add_modal 시작 */
+
+.screen_add_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.screen_add_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.screen_add_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.screen_add_modal form .list_sort input {
+    width: 300px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.screen_add_modal form .list_sort select {
+    width: 300px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.screen_add_modal form .list_name {
+    width: 120px;
+    font-size: 16px;
+}
+
+.screen_add_modal form .modal_btn_box {
+    margin-top: 50px;
+}
+
+/* screen_add_modal 끝 */
+
+
+/* product_add_modal 시작 */
+
+.product_add_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.product_add_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.product_add_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product_add_modal form .list_sort input {
+    width: 300px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.product_add_modal form .list_name {
+    width: 120px;
+    font-size: 16px;
+}
+
+.product_add_modal form .modal_btn_box {
+    margin-top: 50px;
+}
+
+.product_add_modal input[type="file"] {
+    display: none;
+}
+
+.product_add_modal div {
+    text-align: center;
+}
+
+.product_add_modal img {
+    height: 360px;
+    margin-bottom: 10px;
+}
+
+.product_add_modal .add_thumnail_btn {
+    text-align: center;
+    display: block;
+    padding: 6px 25px;
+    background-color:#f9f9f9;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* product_add_modal 끝 */
+
+/* product_view_modal 시작 */
+
+.product_view_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.product_view_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.product_view_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product_view_modal form .list_sort input {
+    width: 300px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.product_view_modal form .list_name {
+    width: 120px;
+    font-size: 16px;
+}
+
+.product_view_modal form .modal_btn_box {
+    margin-top: 50px;
+}
+
+.product_view_modal input[type="file"] {
+    display: none;
+}
+
+.product_view_modal div {
+    text-align: center;
+}
+
+.product_view_modal img {
+    height: 360px;
+    margin-bottom: 10px;
+}
+
+.product_view_modal .modify_thumnail_btn {
+    text-align: center;
+    display: block;
+    padding: 6px 25px;
+    background-color:#f9f9f9;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* product_view_modal 끝 */
+
+/* product_modify__modal 시작 */
+
+.product_modify_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.product_modify_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.product_modify_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product_modify_modal form .list_sort input {
+    width: 300px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.product_modify_modal form .list_name {
+    width: 120px;
+    font-size: 16px;
+}
+
+.product_modify_modal form .modal_btn_box {
+    margin-top: 50px;
+}
+
+.product_modify_modal input[type="file"] {
+    display: none;
+}
+
+.product_modify_modal div {
+    text-align: center;
+}
+
+.product_modify_modal img {
+    height: 360px;
+    margin-bottom: 10px;
+}
+
+.product_modify_modal .modify_thumnail_btn {
+    text-align: center;
+    display: block;
+    padding: 6px 25px;
+    background-color:#f9f9f9;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* product_modify__modal 끝 */
+
+
+/* board_info_modal 시작 */
+
+.board_modal {
+    position:fixed;
+    display:none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.board_modal_body {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    width:1000px;
+    height:80%;
+    padding: 60px 40px;
+    background-color: rgb(255,255,255);
+    border-radius:10px;
+    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.board_modal .board_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+}
+
+.view_annoboard_modal .annoboard_title {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #000;
+}
+
+.view_annoboard_modal input, .view_annoboard_modal textarea {
+    outline: none;
+    border: none;
+    background-color: #e9e9e9;
+}
+
+.board_modal .board_sort {
+    margin-bottom: 30px;
+}
+
+.board_modal .board_sort .board_name {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.board_modal form input {
+    padding: 8px;
+}
+
+.board_modal form input, .board_modal form textarea {
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.board_modal .modal_btn_box {
+    text-align: center;
+}
+
+.board_modal .modal_btn_box button {
+    margin: 0 10px;
+}
+
+.board_modal .board_sort_box {
+    width: 100%;
+    display: flex;
+}
+
+.board_modal .board_sort_box .board_sort_box_flex {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.board_modal .board_sort_box .board_sort_box_flex:nth-child(1) {
+    padding-left: 0px;
+}
+
+.board_modal .board_sort_box .board_sort_box_flex:nth-child(2) {
+    padding-right: 0px;
+}
+
+.board_modal .board_sort_box input {
+    width: 100%;
+}
+
+.view_evboard_modal .annoboard_title {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #000;
+}
+
+.view_evboard_modal input, .view_evboard_modal textarea {
+    outline: none;
+    border: none;
+    background-color: #e9e9e9;
+}
+
+.add_evboard_modal #ev_thumnail_add_btn {
+    display: none;
+}
+
+.modify_evboard_modal #ev_thumnail_modify_btn {
+    display: none;
+}
+
+.add_evboard_modal img {
+    width: 240px;
+    height: 160px;
+    margin-bottom: 10px;
+}
+
+.view_evboard_modal img {
+    width: 240px;
+    height: 160px;
+    margin-bottom: 10px;
+}
+
+.add_evboard_modal .ev_thumnail_add_btn {
+    width: 240px;
+    text-align: center;
+    display: block;
+    padding: 6px 25px;
+    background-color:#f9f9f9;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+}
+
+.modify_evboard_modal img {
+    width: 240px;
+    height: 160px;
+    margin-bottom: 10px;
+}
+
+.modify_evboard_modal .ev_thumnail_modify_btn {
+    width: 240px;
+    text-align: center;
+    display: block;
+    padding: 6px 25px;
+    background-color:#f9f9f9;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+}
+
+.evboard_view, .evboard_modify {
+    color: #fff;
+}
+
+/* board_info_modal 끝 */
+
+/* pre_coupon_modal 시작 */
+
+.pre_coupon_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.add_pre_coupon_modal form {
+    width: 100%;
+}
+
+.pre_coupon_btn_box {
+	margin-top: 40px;
+}
+
+.add_pre_coupon_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.add_pre_coupon_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.add_pre_coupon_modal form .list_name {
+    width: 80px;
+    font-size: 16px;
+}
+
+/* pre_coupon_modal 끝 */
+
+/* pre_coupon_modify_modal 시작 */
+
+.coupon_modify_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.coupon_modify_modal form {
+    width: 100%;
+}
+
+.coupon_modify_btn_box {
+	margin-top: 40px;
+}
+
+.coupon_modify_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.coupon_modify_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+}
+
+.coupon_modify_modal form .list_name {
+    width: 80px;
+    font-size: 16px;
+}
+
+/* pre_coupon_modal 끝 */
+
+/* user_coupon_modal 시작 */
+
+.user_coupon_modal_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+} 
+
+.user_coupon_info_modal form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.user_coupon_info_modal form .list_sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.user_coupon_info_modal form .list_sort input {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    background-color: #f5f5f5;
+    outline: none;
+}
+
+.user_coupon_info_modal form .list_name {
+    width: 80px;
+    font-size: 16px;
+}
+
+/* user_coupon_modal 끝 */

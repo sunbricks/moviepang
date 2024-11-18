@@ -1,0 +1,1319 @@
+
+.labeling {
+    cursor: pointer;
+}
+
+.labeling_detail {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+}
+
+.labeling_header {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.labeling_close_btn {
+    background-color: inherit;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.labeling_info {
+    padding: 20px;
+}
+
+/* product main 시작 */
+.product_title {
+    margin-bottom: 80px;
+}
+
+.product_snack_list {
+    padding-bottom: 60px;
+}
+
+.product_list .category_name{
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.product_list ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product_list ul .product_item {
+    width: 250px;
+    border: 1px solid #BDBDBD;
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 50px;
+}
+
+.product_list ul .product_item:first-child {
+    margin-left: 0px;
+}
+
+.product_list ul .product_item:nth-child(4n+1) {
+    margin-left: 0px;
+}
+
+.product_list ul .product_item:nth-child(4n) {
+    margin-right: 0px;
+}
+
+.product_item_info img {
+    width: 100%;
+    border-bottom: 1px solid #BDBDBD;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.product_item_info .item_name {
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+}
+
+.product_item_info .item_sub_name {
+    color: #BDBDBD;
+}
+
+.product_item_info .item_price {
+    font-size: 16px;
+    display: inline-block;
+}
+
+.product_item_info .prd_infotxt_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_item_info .item_buy_btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #EB093B;
+    width: 60px;
+    text-align: center;
+}
+
+/* product main 끝 */
+
+/* product deatil 시작 */
+
+.product_detail_name {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.product_info_box {
+    display: flex;
+    align-items: center;
+}
+
+.product_left_con {
+    margin-right: 30px;
+}
+
+.product_left_con img {
+    width: 300px;
+    height: 300px;
+}
+
+.product_right_con {
+    padding: 10px 0 10px 10px;
+    width: 100%;
+}
+
+.product_detail_price {
+    font-size: 32px;
+    font-weight: bold;
+    border-bottom: 1px solid #BDBDBD;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.product_detail_info_box {
+    border-bottom: 1px solid #BDBDBD;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.product_detail_info_box span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product_compo {
+    margin-right: 30px;
+}
+
+.labeling {
+    margin-top: 15px;
+    border: 1px solid #c5c5c5;
+    background-color: inherit;
+    color: #c5c5c5;
+    padding: 4px 8px;
+}
+
+.product_cnt_box {
+    border-bottom: 1px solid #BDBDBD;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product_cnt_box button {
+    border: 1px solid #fff;
+    background-color: inherit;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+.product_cnt_box input {
+    border: 1px solid #fff;
+    background-color: inherit;
+    color: #fff;
+    width: 50px;
+    padding: 5px 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.product_cnt_box .product_cnt_price {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product_total_price_box {
+    text-align: right;
+    margin-bottom: 50px;
+}
+
+.product_total_price_box .product_total_price_txt {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.product_total_price_box .product_total_price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #EB093B;
+}
+
+.product_btn_list ul {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.product_btn_list ul li button {
+    padding: 20px 100px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.product_btn_list ul li button.add_basket {
+    padding: 0;
+    background-color: #EB093B;
+}
+
+.product_btn_list ul li button.add_basket img {
+    padding: 6px;
+}
+
+/* product deatil 끝 */
+
+/* product basket 시작 */
+
+.product_basket_title {
+    margin-bottom: 60px;
+}
+
+.product_basket_con table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 50px;
+}
+
+.product_basket_con table th{
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+.product_basket_con table td {
+    padding: 20px 0;
+}
+
+.product_basket_con table td:last-child {
+    border: none;
+}
+
+.product_basket_con table .sel_pro_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product_basket_con table .sel_pro_img {
+    margin-right: 20px;
+    width: 125px;
+    height: 125px;
+}
+
+.product_basket_con table .sel_pro_name {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product_basket_con table .sel_price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.product_basket_con table .count_sort {}
+.product_basket_con table .count_sort button {
+    padding: 6px;
+    font-size: 16px;
+    background-color: inherit;
+    border: 1px solid #BDBDBD;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.product_basket_con table .count_sort input {
+    padding: 6px;
+    color: #fff;
+    font-size: 16px;
+    width: 40px;
+    text-align: center;
+}
+
+.product_basket_con table .sel_total_price {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.product_basket_con table .select_product_del {
+    background-color: inherit;
+    border: 1px solid #BDBDBD;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.all_add_price_box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.all_add_price_box .price_txt {
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.all_add_price_box .total_all_price {
+    border: none;
+    outline: none;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.buy_btn_box {
+    text-align: center;
+}
+
+.buy_btn_box button {
+    margin: 0 10px;
+    padding: 15px 65px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* product basket 끝 */
+
+/* product payment 시작 */
+
+.product_payment_title {
+    margin-bottom: 40px;
+}
+
+.product_payment_info_box {}
+.product_payment_info_box table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 50px;
+    font-size: 17px;
+}
+
+.product_payment_info_box table th {
+    padding: 20px 0;
+    background-color: #484848;
+    border-bottom: 1px solid #fff;
+}
+
+.product_payment_info_box table .pro_sort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_payment_info_box table .pro_sort img {
+    margin-right: 15px;
+}
+
+.product_payment_info_box table td {
+    padding: 15px 0;
+}
+
+.total_payment_price_box {
+    margin-bottom: 60px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.total_payment_txt {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.total_payment_price {
+    font-size: 30px;
+    font-weight: bold;
+    color: #EB093B;
+}
+
+.payment_con_box {
+    margin-bottom: 60px;
+    font-size: 15px;
+}
+
+.payment_con_box input[type=text] {
+    padding: 10px;
+}
+
+.pay_con_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px
+}
+
+.pay_info_box {
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+    padding: 20px;
+}
+
+.pay_sort_box {
+    display: flex;
+}
+
+.pay_sort_box .pay_sort {
+    display: flex;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.pay_sort_box .pay_sort > div {
+    margin-right: 20px;
+}
+
+.pay_sort_box .pay_sort > label {
+    margin-right: 10px;
+}
+
+.payments_btn {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 15px 60px;
+    background-color: #000;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* product payment 끝 */
+
+/* product pay modal 시작 */
+
+/* final_payment_modal 시작 */
+
+.final_product_payment_modal {
+    position:fixed;
+    display: none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.final_product_payment_modal_body {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    width:800px;
+    height:550px;
+    background-color: #fff;
+    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15);
+    border: 5px solid #000;
+}
+
+.final_product_pay_modal_title {
+    width: 100%;
+    background-color: #333;
+    padding: 14px 30px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.final_product_payment_modal input {
+	color: #000;
+}
+
+.final_product_payment_modal_body form {
+    padding: 60px 40px;
+    color: #000;
+}
+
+.final_product_payment_modal_body table {
+    width: 100%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.final_product_payment_modal_body table th {
+    border-bottom: 1px solid #000;
+    padding: 10px;
+}
+
+.final_product_info_box {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #000;
+    text-align: left;
+    padding: 10px;
+}
+
+.final_product_info_box img {
+    width: 120px;
+    height: 170px;
+    margin-right: 10px;
+}
+
+.final_payment_info_box {
+    text-align: left;
+    padding: 10px;
+}
+
+.final_product_payment_modal_body table input.final_input {
+    background-color: inherit;
+    border: none;
+    font-size: 13px;
+}
+
+.final_product_payment_modal_body table input.point_price {
+    color: #EB093B;
+    font-size: 16px;
+}
+
+.final_product_payment_modal_body table .final_sort {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.final_product_payment_modal_body table .final_sort > div {
+    width: 80px;
+}
+
+.button_box {
+    text-align: center;
+}
+
+.button_box button {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button_box button.payment_confirm {
+    background-color: #EB093B;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    margin-right: 10px;
+}
+
+.button_box button.product_payment_cancle {
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 7px 20px;
+}
+
+
+/* final_payment_modal 끝 */
+
+/* product pay modal 끝 */
+
+/* 노트북 시작  1024 */
+@media screen and (max-width: 1300px) {
+    /* product main 시작 */
+    .product_list ul .product_item {
+        width: 220px;
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+    
+    .product_list ul .product_item:first-child {
+        margin-left: 0px;
+    }
+    
+    .product_list ul .product_item:nth-child(4n+1) {
+        margin-left: 0px;
+    }
+    
+    .product_list ul .product_item:nth-child(4n) {
+        margin-right: 0px;
+    }
+    
+    .product_item_info img {
+        width: 100%;
+        border-bottom: 1px solid #BDBDBD;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .product_item_info .item_name {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .product_item_info .item_sub_name {
+        color: #BDBDBD;
+    }
+    
+    .product_item_info .item_price {
+        font-size: 16px;
+        display: inline-block;
+    }
+    
+    .product_item_info .prd_infotxt_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .product_item_info .item_buy_btn {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    /* product main 끝 */
+
+    /* product payment 시작 */
+
+    .product_payment_title {
+        margin-bottom: 30px;
+    }
+
+    .product_payment_info_box table {
+        margin-bottom: 40px;
+        font-size: 16px;
+    }
+
+    .product_payment_info_box table th {
+        padding: 16px 0;
+    }
+
+    .product_payment_info_box table .pro_sort img {
+        margin-right: 15px;
+        width: 200px;
+        height: 200px;
+    }
+
+    /* product payment 끝 */
+}
+/* 노트북 끝 */
+
+
+/* 테블릿 시작 768 */
+@media screen and (max-width: 1023px) {
+    
+    /* product main 시작 */
+    .product_list ul .product_item {
+        width: 48%;
+        margin-left: 7px !important;
+        margin-right: 7px !important;
+    }
+    
+    .product_item_info img {
+        width: 100%;
+        border-bottom: 1px solid #BDBDBD;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .product_item_info .item_name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    
+    .product_item_info .prd_infotxt_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .product_item_info .item_buy_btn {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #EB093B;
+    }
+    /* product main 끝 */
+
+    /* product deatil 시작 */
+
+    .product_left_con {
+        margin-right: 20px;
+    }
+
+    .product_left_con img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .product_detail_price {
+        font-size: 26px;
+    }
+
+    .product_detail_info_box {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .product_detail_info_box span {
+        font-size: 15px;
+    }
+
+    .product_compo {
+        margin-right: 20px;
+    }
+
+    .product_cnt_box .product_cnt_price {
+        font-size: 20px;
+    }
+
+    .product_total_price_box {
+        margin-bottom: 30px;
+    }
+
+    .product_total_price_box .product_total_price {
+        font-size: 26px;
+    }
+
+    .product_btn_list ul li button {
+        padding: 16px 50px;
+        font-size: 18px;
+    }
+
+    .product_btn_list ul li button.add_basket img {
+        padding: 4px;
+    }
+
+    /* product deatil 끝 */
+
+    /* product basket 시작 */
+
+    .product_basket_title {
+        margin-bottom: 40px;
+    }
+
+    .product_basket_con table .sel_pro_img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .product_basket_con table .sel_price {
+        font-size: 16px;
+    }
+
+    .product_basket_con table .count_sort button {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .product_basket_con table .count_sort input {
+        padding: 10px;
+        font-size: 18px;
+        width: 50px;
+    }
+
+    .product_basket_con table .sel_total_price {
+        font-size: 20px;
+    }
+
+    .all_add_price_box {
+        margin-bottom: 50px;
+    }
+
+    .all_add_price_box .price_txt {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 30px;
+    }
+
+    .all_add_price_box .total_all_price {
+        font-size: 24px;
+    }
+
+    /* product basket 끝 */
+
+    /* product payment 시작 */
+    .product_payment_info_box table .pro_sort img {
+        margin-right: 10px;
+        width: 180px;
+        height: 180px;
+    }
+
+    .total_payment_price_box {
+        margin-bottom: 60px;
+        text-align: right;
+        padding-right: 30px;
+    }
+
+    .total_payment_txt {
+        font-size: 18px;
+    }
+
+    .total_payment_price {
+        font-size: 26px;
+    }
+
+    .payment_con_box input[type=text] {
+        width: 200px;
+    }
+
+    /* product payment 끝 */
+
+}
+/* 테블릿 끝 */
+
+/* 모바일 575 시작 */
+@media screen and (max-width: 767px) {
+    /* product main 시작 */
+
+    .product_list ul .product_item {
+        width: 45%;
+        margin-left: 12px !important;
+        margin-right: 12px !important;
+    }
+    
+    .product_item_info img {
+        width: 100%;
+        border-bottom: 1px solid #BDBDBD;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .product_item_info .item_name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .product_item_info .item_sub_name {
+        color: #BDBDBD;
+    }
+    
+    .product_item_info .item_price {
+        font-size: 16px;
+        display: inline-block;
+    }
+    
+    .product_item_info .prd_infotxt_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .product_item_info .item_buy_btn {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #EB093B;
+    }
+    /* product main 끝 */
+
+    /* product deatil 시작 */
+
+    .product_left_con {
+        margin-right: 16px;
+    }
+
+    .product_left_con img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .product_detail_price {
+        font-size: 24px;
+    }
+
+    .product_detail_info_box {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    .product_cnt_box .product_cnt_price {
+        font-size: 18px;
+    }
+
+    .product_total_price_box {
+        margin-bottom: 30px;
+    }
+
+    .product_total_price_box .product_total_price {
+        font-size: 22px;
+    }
+
+    .product_btn_list ul li button {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+
+
+    .product_btn_list ul li button.add_basket img {
+        padding: 0px;
+        width: 36px;
+    }
+
+    /* product deatil 끝 */
+
+    /* product basket 시작 */
+
+    .product_basket_title {
+        margin-bottom: 30px;
+    }
+
+    .product_basket_con table .sel_pro_img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .product_basket_con table .sel_price {
+        font-size: 15px;
+    }
+
+    .product_basket_con table .count_sort button {
+        font-size: 14px;
+    }
+
+    .product_basket_con table .count_sort input {
+        font-size: 14px;
+        width: 40px;
+    }
+
+    .product_basket_con table .sel_total_price {
+        font-size: 16px;
+    }
+
+    .all_add_price_box {
+        margin-bottom: 30px;
+    }
+
+    .all_add_price_box .price_txt {
+        font-size: 18px;
+    }
+
+    .all_add_price_box .total_all_price {
+        font-size: 20px;
+    }
+
+    /* product basket 끝 */
+
+    /* product payment 시작 */
+
+    .product_payment_info_box table .pro_sort img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .total_payment_price_box {
+        margin-bottom: 60px;
+        text-align: right;
+        padding-right: 30px;
+    }
+
+    .total_payment_txt {
+        font-size: 18px;
+    }
+
+    .total_payment_price {
+        font-size: 26px;
+    }
+
+    .pay_sort_box {
+        display: block;
+    }
+
+    .pay_sort_box .pay_sort {
+        margin-bottom: 20px;
+    }
+
+    .pay_sort_box .pay_sort:nth-child(2) {
+        margin-bottom: 0px;
+    }
+
+    .pay_sort_box .pay_sort > div {
+        width: 100px;
+    }
+
+    .payment_con_box input[type=text] {
+        width: 200px;
+    }
+
+    /* product payment 끝 */
+
+}
+/* 모바일 575 끝 */
+
+/* 모바일 375 시작 */
+
+@media screen and (max-width: 524px) {
+    /* product main 시작 */
+
+    .product_list ul {
+        justify-content: space-around;
+    }
+
+    .product_list ul .product_item {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 1px solid #BDBDBD;
+        padding: 10px;
+    }
+
+    .product_list ul .product_item img {
+        border-bottom: 1px solid #BDBDBD;
+    }
+
+    .product_item_info .item_name {
+        font-size: 18px;
+    }
+
+    .product_item_info .item_price {
+        font-size: 20px;
+    }
+
+    /* product main 끝 */
+
+    /* product deatil 시작 */
+
+    .product_info_box {
+        display: block;
+    }
+
+    .product_left_con {
+        margin-right: 0px;
+    }
+
+    .product_left_con img {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .product_detail_price {
+        font-size: 22px;
+    }
+
+    .product_detail_info_box {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    .product_right_con {
+        padding: 0px;
+    }
+
+    .product_cnt_box .product_cnt_price {
+        font-size: 18px;
+    }
+
+    .product_total_price_box {
+        margin-bottom: 30px;
+    }
+
+    .product_total_price_box .product_total_price {
+        font-size: 22px;
+    }
+
+    .product_btn_list ul {
+        display: block;
+    }
+
+    .product_btn_list ul li button {
+        width: 100%;
+        padding: 10px 30px;
+        font-size: 16px;
+        margin-left: 0px;
+        margin-bottom: 20px;
+    }
+
+
+    .product_btn_list ul li button.add_basket img {
+        padding: 0px;
+        width: 36px;
+        
+    }
+
+    /* product deatil 끝 */
+
+    /* product basket 시작 */
+
+    .product_basket_title {
+        margin-bottom: 30px;
+    }
+
+    .product_basket_con table .sel_pro_box {
+        display: block;
+        padding: 0px;
+    }
+
+    .product_basket_con table .sel_pro_name {
+        display: block;
+        font-size: 15px;
+        padding: 30px 0;
+    }
+
+    .product_basket_con table .sel_pro_img {
+        margin-right: 0px;
+        margin-bottom: 0px;
+        display: none;
+    }
+
+    .product_basket_con table .sel_price {
+        font-size: 14px;
+    }
+
+    .product_basket_con table .count_sort {
+        display: flex;
+    }
+
+    .product_basket_con table th:nth-child(2) {
+        display: none;
+    }
+
+    .product_basket_con table td.sel_price {
+        display: none;
+    }
+
+    .all_add_price_box .price_txt {
+        font-size: 16px;
+    }
+
+    .all_add_price_box .total_all_price {
+        font-size: 18px;
+    }
+
+    .buy_btn_box button {
+        margin: 0px;
+        padding: 15px 65px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    /* product basket 끝 */
+
+    /* product payment 시작 */
+
+    .product_payment_info_box table .pro_sort img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .total_payment_price_box {
+        margin-bottom: 30px;
+        padding-right: 0px;
+    }
+
+    .total_payment_price {
+        font-size: 22px;
+    }
+
+    .pay_sort_box {
+        display: block;
+    }
+
+    .pay_sort_box .pay_sort {
+        margin: 0px;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .pay_sort_box .pay_sort:nth-child(2) {
+        margin-bottom: 0px;
+    }
+
+    .pay_sort_box .pay_sort > div {
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .payment_con_box input[type=text] {
+        width: 100%;
+
+    }
+
+    /* product payment 끝 */
+}
+
+/* 모바일 375 끝 */
+
+/* 모바일 320 시작 */
+@media screen and (max-width: 374px) {
+    .product_item_info .item_name {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .product_item_info .item_price {
+        font-size: 16px;
+    }
+
+    /* product payment 시작 */
+
+    .product_payment_info_box table .pro_sort img {
+        display: none;
+    }
+
+    .total_payment_price_box {
+        margin-bottom: 30px;
+        padding-right: 0px;
+    }
+
+    .total_payment_price {
+        font-size: 18px;
+    }
+
+    /* product payment 끝 */
+    
+    /* final_payment_modal 시작 */
+   
+   .final_product_payment_modal_body {
+       position:absolute;
+       top: 50%;
+       left: 50%;
+       transform:translate(-50%, -50%);
+       width:100%;
+       height:80%;
+   }
+   
+   .final_product_pay_modal_title {
+       width: 100%;
+       background-color: #333;
+       padding: 14px 30px;
+       font-size: 17px;
+       font-weight: bold;
+   }
+   
+   .final_product_payment_modal_body form {
+      width: 100%;
+       padding: 20px;
+   }
+   
+   .final_product_payment_modal_body table {
+       width: 100%;
+   }
+   
+   .final_product_payment_modal_body table th {
+       padding: 5px;
+   }
+   
+   .final_product_info_box {
+       display: block;
+       text-align: center;
+       padding: 0px;
+   }
+   
+   .final_product_info_box img {
+       width: 50px;
+       height: 50px;
+       margin-right: 0px;
+       margin-bottom: 20px;
+   }
+   
+   .final_payment_info_box {
+      width: 150px !important;
+       text-align: left;
+       padding: 10px;
+   }
+   
+   .final_product_payment_modal_body table input.final_input {
+       background-color: inherit;
+       border: none;
+       font-size: 13px;
+   }
+   
+   .final_input#amount {
+      width: 100px !important;
+   }
+   
+   .final_product_payment_modal_body table input.point_price {
+       font-size: 14px;
+   }
+   
+   .final_product_payment_modal_body table .final_sort {
+       display: flex;
+       margin-bottom: 10px;
+   }
+   
+   .final_product_payment_modal_body table .final_sort > div {
+       width: 60px;
+   }
+}
+/* 모바일 320 끝 */
+
+
+

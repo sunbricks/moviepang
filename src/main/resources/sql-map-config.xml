@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.movie.pang.mem.MemVO" alias="memdto" />
+		<typeAlias type="com.movie.pang.mov.Mov_screenVO"
+			alias="movScreenVO" />
+		<typeAlias type="com.movie.pang.board.BoardVO"
+			alias="boardDTO" />
+		<typeAlias type="com.movie.pang.ev.Ev_boardVO"
+			alias="evboardDTO" />
+		<typeAlias type="com.movie.pang.mov.Mov_moviesVO"
+			alias="movieVO" />
+		<typeAlias type="com.movie.pang.ticket.TicketVO"
+			alias="ticketVO" />
+		<typeAlias type="com.movie.pang.mov.Mov_roomVO"
+			alias="movRoomVO" />
+		<typeAlias type="com.movie.pang.coupon.CouponVO"
+			alias="couponDTO" />
+		<typeAlias type="com.movie.pang.prd.ProductsVO"
+			alias="prddto" />
+		<typeAlias type="com.movie.pang.prd.CartVO" alias="cartVO" />
+		<typeAlias type="com.movie.pang.prd.GiftVO" alias="giftdto" />
+		<typeAlias type="com.movie.pang.bill.BillVO" alias="billdto"/>
+		<typeAlias type="com.movie.pang.coupon.CouponVO" alias="couponDTO" />
+			<typeAlias type="com.movie.pang.payTicket.TicketPayVO" alias="ticketPayVO" />
+			<typeAlias type="com.movie.pang.review.ReviewVO" alias="reviewVO" />
+		
+		
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mappings/mem-mapping.xml" />
+		<mapper resource="mappings/mov-screen-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/ev_board-mapping.xml" />
+		<mapper resource="mappings/mov-movie-mapping.xml" />
+		<mapper resource="mappings/ticket-mapping.xml" />
+		<mapper resource="mappings/coupon-mapping.xml" />
+		<mapper resource="mappings/prd-mapping.xml" />
+		<mapper resource="mappings/cart-mapping.xml" />
+		<mapper resource="mappings/gift-mapping.xml"/>
+		<mapper resource="mappings/bill-mapping.xml"/>
+		<mapper resource="mappings/ticketPay-mapping.xml"/>
+		<mapper resource="mappings/review-mapping.xml"/>
+
+	</mappers>
+</configuration>

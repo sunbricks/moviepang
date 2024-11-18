@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MovDAO">
+
+   <select id="getMovieList" resultType="movieVO">
+      SELECT * FROM MOV_MOVIES WHERE 1=1
+      <if test="searchCondition == 'MOV_NM' "> AND TITLE LIKE CONCAT ('%',#{searchKeyword},'%')
+      </if>
+      <if test="searchCondition == 'MOV_CON1' "> AND CONTENT LIKE CONCAT
+         ('%',#{searchKeyword},'%') </if>
+      ORDER BY MOV_NUM DESC
+   </select>
+
+   <select id="getMovie" resultType="movieVO">
+      SELECT * FROM MOV_MOVIES WHERE
+      MOV_NUM= #{mov_Num}
+   </select>
+
+
+   <insert id="insertMovie">
+      INSERT INTO MOV_MOVIES (MOV_NM, MOV_CON1,
+      MOV_CON2,MOV_CON3,
+      MOV_DETAIL, MOV_DATE, MOV_PD, MOV_ACT,
+      MOV_POST,MOV_RT, MOV_LANG,
+      MOV_SUB,MOV_NATION,MOV_RATE,MOV_ENDDATE)
+      VALUES(#{mov_Nm},#{mov_Con1},
+      #{mov_Con2}, #{mov_Con3},
+      #{mov_Detail},
+      #{mov_Date}, #{mov_Pd},
+      #{mov_Act},
+      #{mov_Post}, #{mov_Rt}, #{mov_Lang},
+      #{mov_Sub}, #{mov_Nation}, #{mov_Rate},#{mov_EndDate} )
+   </insert>
+
+<update id="updateMovie">
+  UPDATE MOV_MOVIES
+  <set>
+    <if test="mov_Nm != null">MOV_NM = #{mov_Nm},</if>
+    <if test="mov_Con1 != null">MOV_CON1 = #{mov_Con1},</if>
+    <if test="mov_Con2 != null">MOV_CON2 = #{mov_Con2},</if>
+    <if test="mov_Con3 != null">MOV_CON3 = #{mov_Con3},</if>
+    <if test="mov_Detail != null">MOV_DETAIL = #{mov_Detail},</if>
+    <if test="mov_Date != null">MOV_DATE = #{mov_Date},</if>
+    <if test="mov_Pd != null">MOV_PD = #{mov_Pd},</if>
+    <if test="mov_Act != null">MOV_ACT = #{mov_Act},</if>
+    <if test="mov_Post != null">MOV_POST = #{mov_Post},</if>
+    <if test="mov_Rt != null">MOV_RT = #{mov_Rt},</if>
+    <if test="mov_Lang != null">MOV_LANG = #{mov_Lang},</if>
+    <if test="mov_Sub != null">MOV_SUB = #{mov_Sub},</if>
+    <if test="mov_Nation != null">MOV_NATION = #{mov_Nation},</if>
+    <if test="mov_Rate != null">MOV_RATE = #{mov_Rate},</if>
+    <if test="mov_EndDate != null">MOV_ENDDATE = #{mov_EndDate},</if>
+  </set>
+  WHERE MOV_NUM = #{mov_Num}
+</update>
+
+   <delete id="deleteMovie">
+      DELETE FROM MOV_MOVIES WHERE MOV_NUM = #{mov_Num}
+   </delete>
+
+   <select id="getTotalListCnt" resultType="_int">
+      SELECT count(*) FROM MOV_MOVIES WHERE 1 = 1
+      <if test="searchCondition == 'MOV_NM'"> AND MOV_NM LIKE CONCAT('%', #{searchKeyword}, '%')</if>
+      <if test="searchCondition == 'MOV_PD'"> AND MOV_PD LIKE CONCAT('%', #{searchKeyword}, '%')</if>
+      <if test="searchCondition == 'MOV_ACT'"> AND MOV_PD LIKE CONCAT('%', #{searchKeyword}, '%')</if>
+
+   </select>
+
+   <select id="getMovList" resultType="movieVO">
+      SELECT * FROM MOV_MOVIES
+   </select>
+
+   <select id="getMovAdminList" resultType="movieVO">
+      SELECT * FROM MOV_MOVIES WHERE 1 = 1
+      <if test="searchCondition == 'MOV_NM'"> AND MOV_NM LIKE CONCAT('%', #{searchKeyword}, '%') </if>
+      <if test="searchCondition == 'MOV_PD'"> AND MOV_PD LIKE CONCAT('%', #{searchKeyword}, '%')</if>
+      <if test="searchCondition == 'MOV_ACT'"> AND MOV_PD LIKE CONCAT('%', #{searchKeyword}, '%')</if>
+   </select>
+
+   <select id="getMovDetail" resultType="movieVO">
+      SELECT * FROM MOV_MOVIES
+      WHERE MOV_NUM= #{mov_Num}
+   </select>
+
+   <select id="searchMov" resultType="movieVO"
+      parameterType="java.util.Map">
+      SELECT * FROM MOV_MOVIES
+      <where>
+         <if test="searchCondition != null and searchCondition != ''">
+            <choose>
+               <when test="searchCondition == 'mov_Nm'">
+                  AND mov_Nm LIKE CONCAT('%', #{searchKeyword}, '%')
+               </when>
+               <when test="searchCondition == 'mov_Con1'">
+                  AND mov_Con1 LIKE CONCAT('%', #{searchKeyword},
+                  '%')
+               </when>
+               <when test="searchCondition == 'mov_Pd'">
+                  AND mov_Pd LIKE CONCAT('%', #{searchKeyword}, '%')
+               </when>
+               <when test="searchCondition == 'mov_Act'">
+                  AND mov_Act LIKE CONCAT('%', #{searchKeyword}, '%')
+               </when>
+            </choose>
+         </if>
+      </where>
+   </select>
+
+   <select id="getMovModify" resultType="movieVO">
+      SELECT * FROM MOV_MOVIES
+      WHERE MOV_NUM= #{mov_Num}
+   </select>
+   
+   <select id="">
+        
+   </select>
+</mapper>

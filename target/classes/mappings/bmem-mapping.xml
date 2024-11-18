@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BmemDAO">
+	<resultMap type="bmemdto" id="bmem">
+		<result property="bmem_pwd" column="BMEM_PWD" />
+		<result property="bmem_nm" column="BMEM_NM" />
+		<result property="bmem_tel" column="BMEM_TEL" />
+		<result property="bmem_bir" column="BMEM_BIR" />
+	</resultMap>
+
+	<insert id="insertBmem">
+		INSERT INTO BMEMBER (BMEM_PWD, BMEM_NM, BMEM_TEL, BMEM_BIR ) VALUES(#{bmem_pwd}, #{bmem_nm},#{bmem_tel}, #{bmem_bir})
+	</insert>
+
+</mapper>

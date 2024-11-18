@@ -1,0 +1,307 @@
+#header {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    background-color: #000;
+    transition: all 0.3s;
+}
+
+.mo_header {
+    display: none;
+}
+
+#header .h_in {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+#header .h_in .h_top {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header .h_in .h_top img {
+    padding: 25px 0;
+}
+
+#header .h_in .h_top .sub_menu {
+    display: flex;
+    padding: 30px 0;
+}
+
+#header .h_in .h_top .sub_menu div {
+    margin-left: 20px;
+}
+
+#header .h_in .h_bot {
+    height: 60px;
+}
+
+#header .h_in .h_bot ul {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+#header .h_in .h_bot ul a {
+    font-size: 16px;
+    padding: 0 60px;
+}
+
+#header .h_in .h_bot ul a:hover {
+    font-weight: bold;
+}
+
+hr {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    border: 1px solid #999;
+}
+
+/* 노트북 시작 */
+@media screen and (max-width: 1300px) {
+    #header .h_in {
+        width: 960px;
+    }
+
+    #header .h_in .h_top {
+        height: 60px;
+    }
+
+    #header .h_in .h_top img {
+        padding: 16px 0;
+    }
+
+    #header .h_in .h_top .sub_menu {
+        padding: 20px 0;
+    }
+    
+    #header .h_in .h_bot {
+        height: 40px;
+    }
+
+    #header .h_in .h_bot ul {
+        padding: 10px 0;
+    }
+    
+    #header .h_in .h_bot ul a {
+        font-size: 16px;
+        padding: 0 40px;
+    }
+}
+/* 노트북 끝 */
+
+
+/* 테블릿 시작 */
+@media screen and (max-width: 1023px) {
+    #header .h_in {
+        width: 100%;
+        margin: 0 auto;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .pc_header {
+        display: none;
+    }
+
+    .mo_header {
+        width: 100%;
+        background-color: #000;
+        display: block;
+        padding: 20px 0;
+    }
+
+    .mo_header_box {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mo_header_box img {
+        width: 100px;
+    }
+
+    .mo_header {}
+
+    #header .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        max-width: 0;
+        transition: 0.5s ease;
+        z-index: 999;
+        background-color: #000;
+        width: 100%;
+        margin-top: 100px;
+        margin: 0 auto;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    #header .burger-icon {
+        cursor: pointer;
+        display: inline-block;
+        position: absolute;
+        z-index: 1000;
+        padding: 8px 0;
+        top: 20px;
+        right: 20px;
+        user-select: none;
+        width: auto;
+        margin: 0;
+    }
+    
+    #header .burger-icon .burger-sticks {
+        background-color: #fff;
+        display: block;
+        height: 3px;
+        position: relative;
+        transition: .2s ease-out;
+        width: 30px;
+    }
+    
+    #header .burger-icon .burger-sticks:before,
+    #header .burger-icon .burger-sticks:after {
+        background-color: #fff;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+    
+    #header .burger-icon .burger-sticks:before {
+        top: 10px;
+    }
+    
+    #header .burger-icon .burger-sticks:after {
+        top: -10px;
+    }
+    
+    #header .burger-check {
+        display: none;
+    }
+    
+    #header .burger-check:checked~.menu {
+        max-width: 100%;
+    }
+    
+    #header .burger-check:checked~.burger-icon .burger-sticks {
+        background: transparent;
+    }
+    
+    #header .burger-check:checked~.burger-icon .burger-sticks:before {
+        transform: rotate(-45deg);
+    }
+    
+    #header .burger-check:checked~.burger-icon .burger-sticks:after {
+        transform: rotate(45deg);
+    }
+    
+    #header .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+    #header .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+        top: 0;
+    }
+
+    #header .menu nav {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .menu nav .nav-menu-btn-mo {
+        margin: 0 auto;
+        text-align: center;
+        width: 600px;
+    }
+
+    .nav-menu-btn-mo {
+        padding: 30px;
+        font-size: 26px;
+    }
+
+    div.login {
+        margin: 0 auto;
+        text-align: center;
+        width: 600px;
+    }
+}
+/* 테블릿 끝 */
+
+/* 모바일 575 시작 */
+@media screen and (max-width: 767px) {
+    #header .h_in {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .menu nav .nav-menu-btn-mo {
+        width: 400px;
+    }
+
+    .nav-menu-btn-mo {
+        font-size: 22px;
+    }
+
+    div.login {
+        width: 400px;
+    }
+}
+/* 모바일 575 끝 */
+
+/* 모바일 475 시작 */
+
+@media screen and (max-width: 524px) {
+    .menu nav .nav-menu-btn-mo {
+        width: 350px;
+    }
+
+    .nav-menu-btn-mo {
+        font-size: 20px;
+    }
+
+    div.login {
+        width: 350px;
+    }
+
+    #header .menu nav {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+}
+
+/* 모바일 475 끝 */
+
+/* 모바일 375 시작 */
+@media screen and (max-width: 374px) {
+    .menu nav .nav-menu-btn-mo {
+        width: 300px;
+    }
+    .nav-menu-btn-mo {
+        font-size: 18px;
+        padding: 20px;
+    }
+    div.login {
+        width: 300px;
+    }
+}
+/* 모바일 375 끝 */
+
+@media screen and (max-width: 320px) {
+    .menu nav .nav-menu-btn-mo {
+        width: 280px;
+    }
+
+    .nav-menu-btn-mo {
+        font-size: 18px;
+    }
+
+    div.login {
+        width: 280px;
+        font-size: 16px;
+    }
+}
+

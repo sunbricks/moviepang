@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="evDAO">
+
+   <resultMap type="evboardDTO" id="Ev_boardList">
+      <id property="ev_num" column="EV_NUM" />
+      <result property="ev_title" column="EV_TITLE" />
+      <result property="ev_content" column="EV_CONTENT" />
+      <result property="ev_sdate" column="EV_SDATE" />
+      <result property="ev_edate" column="EV_EDATE" />
+      <result property="ev_status" column="EV_STATUS" />
+      <result property="ev_img" column="EV_IMG" />
+   </resultMap>
+
+   <select id="getEv_BoardList" resultMap="Ev_boardList">
+      SELECT A.*, ROW_NUMBER() OVER() AS ROWNO FROM Ev_BOARD A WHERE 1 = 1 
+      <if test="searchCondition == 'EV_TITLE'"> AND EV_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') </if>
+      <if test="searchCondition == 'EV_CONTENT'"> AND EV_CONTENT LIKE CONCAT('%', #{searchKeyword}, '%')
+      </if>
+      ORDER BY EV_NUM DESC
+      LIMIT #{start}, #{listCount}
+   </select>
+<!--    관리자 이벤트 목록 -->
+   <select id="getallEv_BoardList" resultMap="Ev_boardList">
+      select * from ev_board where 1=1
+   </select>
+   
+<!--    메인화면 이벤트 -->
+   <select id="getRecentEvents" resultMap="Ev_boardList">
+      SELECT * FROM EV_BOARD ORDER BY EV_NUM  DESC LIMIT 3;
+   </select>
+   
+<!-- 이벤트 진행중 -->
+   <select id="getallEv_BoardListt" resultMap="Ev_boardList">
+      select * from ev_board where ev_status="진행중"
+   </select>
+   
+<!-- 이벤트 종료 -->
+   <select id="getallEv_BoardListf" resultMap="Ev_boardList">
+      select * from ev_board where ev_status="종료"
+   </select>
+   
+   <select id="getTotalListCnt" resultType="_int">
+      SELECT count(*) FROM Ev_BOARD WHERE 1 = 1
+      <if test="searchCondition == 'EV_TITLE'"> AND EV_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') </if>
+      <if test="searchCondition == 'EV_CONTENT'"> AND EV_CONTENT LIKE CONCAT('%', #{searchKeyword}, '%')</if>
+   </select>
+
+   <select id="getEv_board" resultType="com.movie.pang.ev.Ev_boardVO">
+      SELECT * FROM EV_BOARD WHERE EV_NUM = #{ev_num}
+   </select>
+   
+<!--    진행상태번호 가져오기 -->
+   <select id="getEv_board1" resultType="com.movie.pang.ev.Ev_boardVO">
+      SELECT * FROM EV_BOARD WHERE EV_NUM = #{ev_num}
+   </select>
+
+   <insert id="insertEv_board">
+      INSERT INTO Ev_BOARD(EV_TITLE, EV_CONTENT, EV_SDATE, EV_EDATE,
+    EV_IMG) VALUES(#{ev_title}, #{ev_content}, #{ev_sdate},
+      #{ev_edate}, #{ev_img} )
+   </insert>
+
+   <update id="updateEv_board">
+      UPDATE Ev_BOARD
+      SET
+      EV_TITLE = #{ev_title},
+      EV_CONTENT = #{ev_content},
+      EV_SDATE = #{ev_sdate},
+      EV_EDATE = #{ev_edate},
+      EV_STATUS = #{ev_status},
+      EV_IMG = #{ev_img}
+      WHERE EV_NUM = #{ev_num}
+   </update>
+   
+   <update id="updateEv_board1">
+      UPDATE Ev_BOARD
+      SET EV_STATUS = "종료"
+      WHERE EV_NUM = #{ev_num}
+   </update>
+
+   <delete id="deleteEv_board">
+      DELETE FROM Ev_BOARD WHERE EV_NUM = #{ev_num}
+   </delete>
+
+<select id="getEv_BoardList1" resultType="com.movie.pang.ev.Ev_boardVO" parameterType="java.util.Map">
+    SELECT * FROM Ev_BOARD
+    <where>
+        <if test="option != null and option != ''">
+            <choose>
+                <when test="option == 'ev_title'">
+                    AND EV_TITLE LIKE CONCAT('%', #{value}, '%')
+                </when>
+                <when test="option == 'ev_content'">
+                    AND EV_CONTENT LIKE CONCAT('%', #{value}, '%')
+                </when>
+            </choose>
+        </if>
+    </where>
+</select>
+
+</mapper>

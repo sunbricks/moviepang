@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PrdDAO">
+	<resultMap type="prddto" id="prdList">
+		<id property="prd_num" column="PRD_NUM" />
+		<result property="prd_name" column="PRD_NAME" />
+		<result property="prd_type" column="PRD_TYPE" />
+		<result property="prd_desc" column="PRD_DESC" />
+		<result property="prd_price" column="PRD_PRICE" />
+		<result property="prd_status" column="PRD_STATUS" />
+		<result property="prd_count" column="PRD_COUNT" />
+		<result property="prd_img" column="PRD_IMG" />
+
+	</resultMap>
+
+	<insert id="insertPrd">
+		INSERT INTO PRODUCT (PRD_NUM, PRD_NAME, PRD_TYPE,
+		PRD_DESC, PRD_PRICE,
+		PRD_IMG) VALUES(#{prd_num}, #{prd_name},
+		#{prd_type}, #{prd_desc},
+		#{prd_price}, #{prd_img})
+	</insert>
+
+	<select id="getPrdList" resultMap="prdList">
+		SELECT A.*, ROW_NUMBER()
+		OVER() AS ROWNO FROM product A WHERE 1 = 1
+	</select>
+
+	<select id="getPrd" resultType="com.movie.pang.prd.ProductsVO">
+		SELECT * FROM PRODUCT WHERE
+		PRD_NUM = #{prd_num}
+	</select>
+
+	<delete id="deletePrd">
+		DELETE FROM PRODUCT WHERE PRD_NUM = #{prd_num}
+	</delete>
+
+	<update id="updatePrd">
+		UPDATE PRODUCT SET PRD_NAME = #{prd_name}, PRD_TYPE =
+		#{prd_type}, PRD_DESC
+		= #{prd_desc}, PRD_PRICE = #{prd_price}, PRD_IMG
+		= #{prd_img} WHERE
+		PRD_NUM = #{prd_num}
+	</update>
+	<select id="searchPrd" resultType="prddto"
+		parameterType="java.util.Map">
+		SELECT * FROM PRODUCT
+		<where>
+			<if test="option != null and option != ''">
+				<choose>
+					<when test="option == 'prd_num'">
+						AND prd_num LIKE CONCAT('%', #{value}, '%')
+					</when>
+					<when test="option == 'prd_name'">
+						AND prd_name LIKE CONCAT('%', #{value}, '%')
+					</when>
+				</choose>
+			</if>
+		</where>
+
+	</select>
+
+
+</mapper>

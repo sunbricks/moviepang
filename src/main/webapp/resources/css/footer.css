@@ -1,0 +1,95 @@
+#footer {
+    padding: 50px 0;
+    background-color: #000;
+}
+
+.f_in {
+    width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.f_in img {
+    margin-bottom: 50px
+}
+
+.f_in p {
+    margin-bottom: 5px;
+}
+
+.go_top {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    background-color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.go_top img {
+    width: 50px;
+}
+
+/* 노트북 시작 */
+@media screen and (max-width: 1300px) {
+    
+}
+/* 노트북 끝 */
+
+
+/* 테블릿 시작 */
+@media screen and (max-width: 1023px) {
+    .f_in {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+/* 테블릿 끝 */
+
+/* 모바일 575 시작 */
+@media screen and (max-width: 767px) {
+    .f_in {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+/* 모바일 575 끝 */
+
+/* 모바일 475 시작 */
+
+@media screen and (max-width: 524px) {
+    #footer {
+        padding: 30px 0;
+        font-size: 12px;
+    }
+
+    .f_in {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .f_in img {
+        margin-bottom: 30px;
+        width: 120px;
+    }
+}
+
+/* 모바일 475 끝 */
+
+@media screen and (max-width: 374px) {
+    .f_in {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .go_top {
+        bottom: 5%;
+        right: 10%;
+    }
+    
+    .go_top img {
+        width: 40px;
+    }
+
+}

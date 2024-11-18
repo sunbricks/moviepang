@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:component-scan base-package="com.my.web" />
+	<annotation-driven />
+
+	<!-- <resources mapping="/front/**" location="/resources/css/,/resources/js/" /> -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- ViewResolver -->
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<!-- interceptors -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/*" />
+<!-- path는 url pattern 이라고 함 -->
+<!-- mapping interceptor를 무조건 타라는 url pattern -->
+			<mapping path="/main*" />
+<!-- 			<mapping path="/join*" /> -->
+<!-- 			exclude-mapping 제외하라는 url pattern -->
+			<exclude-mapping path="/login*" />
+			<exclude-mapping path="/join*" />
+			<exclude-mapping path="/home*" />
+<!-- 			<exclude-mapping path="/home/*" /> 하위로 들어오는 모든 이름에 대해서 -->
+			<exclude-mapping path="/front/**" />
+			<exclude-mapping path="/resources/" />
+			<exclude-mapping path="/pathvar/**" />
+			<beans:bean class="com.my.web.interceptor.Interceptor" />
+		</interceptor>
+	</interceptors>
+
+</beans:beans>

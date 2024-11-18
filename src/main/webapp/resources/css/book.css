@@ -1,0 +1,813 @@
+/* bookmainpage 시작 */
+
+.age_all {
+    background-color: #279C57;
+}
+.age_12 {
+    background-color: #EAB836;
+}
+.age_15 {
+    background-color: #DD742F;
+}
+.age_19 {
+    background-color: #FF7392;
+}
+
+li.my_book_list::marker {
+	display: none !important;
+}
+
+.book_sel_box::-webkit-scrollbar-button {
+    display: none;
+}
+.book_sel_box::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+
+.book_sel_box::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+}
+.book_sel_box::-webkit-scrollbar-track {
+    display: none;
+}
+
+.book_sel_box::-webkit-scrollbar-thumb { 
+    background-color: #e5e5e5;
+    border-radius: 20px;
+}
+
+.book_sel_box::-webkit-scrollbar-button {
+    display: none;
+}
+
+.bookpage_title {
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.book_selection_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.book_sel_movie {
+    width: 35%;
+    margin-right: 10px;
+}
+
+.book_sel_date {
+    width: 10%;
+}
+
+.book_sel_time {
+    width: 55%;
+    margin-left: 10px;
+}
+
+.book_sel_head {
+    padding: 10px 0;
+    background-color: #fff;
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.book_sel_box {
+    overflow-y: auto;
+    height: 400px;
+    background-color: #5E5E5E;
+}
+
+.seat_selection_box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.seat_sel_head {
+    padding: 10px 0;
+    background-color: #fff;
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.book_movie_list_box .book_movie_list {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.book_movie_list .movie_age {
+    margin-right: 10px;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.book_date {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.book_date .book_year{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.book_date .book_month{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#calendar {
+    text-align: center;
+}
+
+div.clickable {
+    cursor: pointer;
+    padding: 5px 0;
+    margin: 4px 0;
+}
+
+.bg-light {
+    background-color: #f0f0f0 !important;
+    color: #d0d0d0 !important;
+    padding: 5px 0;
+    margin: 4px 0;
+}
+
+.selected_date, .selected_movie {
+    background-color: #000;
+}
+
+.screen_box {
+    padding: 20px 60px;
+}
+
+.screen_box .screen_info {
+    display: flex;
+    color: #B3B3B3;
+    margin-bottom: 15px;
+}
+
+.screen_main {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.screen_type {
+    color: #FF7392;
+    margin-right: 5px;
+}
+
+.screen_screen {
+    text-align: center;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 0px;
+    margin: 0 auto;
+}
+
+.seat_box {
+   margin: 50px auto;
+   text-align: center;
+}
+
+.mov_seat {
+   padding: 5px;
+   width: 30px;
+   height: 30px;
+   margin-bottom: 4px;
+}
+
+.book_time_list_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book_time_list_box li {
+    width: 25%;
+    margin-bottom: 20px;
+}
+
+.book_time_list_box li .screen_time {
+    margin-right: 10px;
+    border: 1px solid #8C8C8C;
+    padding: 5px 15px;
+    display: inline-block;
+    width: 65px;
+    cursor: pointer;
+}
+
+.book_time_list_box li .screen_time.selected_screen {
+    background-color: #000;
+    width: 65px;
+}
+
+.book_rs_box {
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #161616;
+}
+
+.book_rs_info_box {
+    display: flex;
+}
+
+.book_rs_info_box input {
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+
+.movie_info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 15px;
+}
+
+.movie_info .movie_thumnail {
+    width: 140px;
+    height: 180px;
+    background-color: #8C8C8C;
+    margin-right: 10px;
+}
+
+.movie_info .movie_title input {
+    text-align: center;
+    font-size: 16px;
+}
+
+.date_info {
+    position: relative;
+}
+
+.date_info .book_txt {
+    width: 60px;
+}
+
+.date_info input {
+    font-weight: bold;
+}
+
+.date_info input.selectedTime {
+    width: 45px;
+}
+
+.movie_info::after, .date_info::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: #8C8C8C;
+    right: 0;
+}
+
+#selectedDate {
+    width: 124px;
+}
+
+.date_info, .seat_info, .pay_info, .go_select_seat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book_sort {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.seat_info .seat_title, .pay_info .pay_title {
+    font-size: 24px;
+    color: #5E5E5E;
+}
+
+.pay_info input {
+	width: 130px;
+}
+
+.seat_info, .pay_info, .go_select_seat {
+    padding-left: 20px;
+    width: 150px;
+}
+
+.go_select_seat input {
+    height: 60%;
+    font-size: 24px;
+    background-color: #EB093B;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.go_select_seat button {
+    height: 60%;
+    font-size: 24px;
+    background-color: #EB093B;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* bookmainpage 끝 */
+
+/* bookseat select 시작 */
+
+.book_ls {
+    letter-spacing: 2em;
+}
+
+.select_nop_box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+
+.nop_box {
+    padding: 20px 60px 30px 20px;
+    margin-right: 60px;
+    border-right: 1px solid #fff;
+    height: 100%;
+}
+
+.nop_box span {
+    margin-right: 15px;
+}
+
+.nop_box select {
+    width: 100px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.book_info_box {
+    padding: 20px 60px 30px 0;
+}
+
+.book_info_box .book_info_top {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.book_info_box .book_info_top .screen_name {
+    margin-right: 5px;
+}
+
+.book_info_box .book_info_bot span {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.step_2 {
+    border-right: 1px solid #8c8c8c;
+}
+
+.pay_mg {
+    margin-bottom: 10px;
+}
+
+.seat_info input, .pay_sort input {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.selected_date {
+   width: 100px;
+}
+.selected_time {
+   width: 60px;
+}
+
+
+/* bookpayment 시작 */
+
+.bookpayment_title {
+    margin-bottom: 40px;
+}
+
+.book_payment_box {
+    color: #fff;
+}
+
+.book_payment_top {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+
+
+.step_title {
+    width: 100%;
+    background-color: #000;
+    padding: 10px 60px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.8em;
+    color: #fff;
+}
+
+.pay_coupon_box {
+    padding: 20px;
+}
+
+.non_coupon_box {
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.pay_coupon_box table {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.pay_coupon_box table th {
+    background-color: #333;
+    padding: 10px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.pay_coupon_box table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.pay_coupon_box table td button {
+    cursor: pointer;
+}
+
+.step_box {
+    width: 100%;
+    background-color: #5E5E5E;
+    font-size: 16px;
+}
+
+.payment_select_list {
+    padding: 30px;
+    display: flex;
+}
+
+.payment_box {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.payment_box label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.book_payment_left {
+    width: 80%;
+    margin-right: 10px;
+}
+
+.book_payment_right {
+    width: 20%;
+    padding: 50px 20px;
+    border: 1px solid #fff;
+    margin-left: 10px;
+}
+
+.payment_txt {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.book_pay_price, .book_dis_price_txt, .last_payment_method_price {
+    font-size: 16px;
+} 
+
+.pad_boder {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+.last_payment_price_box {
+}
+
+.last_payment_price_txt {
+    font-size: 20px;
+    margin-bottom: 20px
+}
+
+.last_payment_price {
+    font-size: 26px;
+    color: #EB093B;
+}
+
+/* bookpayment 끝 */
+
+/* final_payment_modal 시작 */
+
+.final_payment_modal {
+    position:fixed;
+    display: none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.final_payment_modal_body {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    width:800px;
+    height:550px;
+    background-color: #fff;
+    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15);
+    border: 5px solid #000;
+}
+
+.final_payment_modal_title {
+    width: 100%;
+    background-color: #333;
+    padding: 14px 30px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.final_payment_modal_body form {
+    padding: 60px 40px;
+    color: #000;
+}
+
+.final_payment_modal_body table {
+    width: 100%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.final_payment_modal_body table th {
+    border-bottom: 1px solid #000;
+    padding: 10px;
+}
+
+.final_book_info_box {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #000;
+    text-align: left;
+    padding: 10px;
+    color: #000;
+}
+
+.final_book_info_box img {
+    width: 120px;
+    height: 170px;
+    margin-right: 10px;
+}
+
+.final_payment_info_box {
+    text-align: left;
+    padding: 10px;
+    color: #000;
+}
+
+.final_payment_modal_body table input.final_input {
+    background-color: inherit;
+    border: none;
+    font-size: 13px;
+}
+
+.final_payment_modal_body table input.point_price {
+    color: #EB093B;
+    font-size: 16px;
+}
+
+.final_payment_modal_body table .final_sort {
+    display: flex;
+    margin-bottom: 10px;
+    color: #000;
+    align-item: center;
+}
+
+.final_payment_modal_body table .final_sort input {
+    color: #000;
+}
+
+#final_input_payment_methods, #trans_PayPrice {
+	color: #EB093B;
+	font-size: 16px;
+	font-weight: bold;
+	width: 100px;
+}
+
+.final_payment_modal_body table .final_sort > div {
+    width: 60px;
+}
+
+.notice_box {
+    width: 100%;
+    color: #000;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+.button_box {
+    text-align: center;
+}
+
+.button_box button {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button_box button.payment_confirm {
+    background-color: #EB093B;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    margin-right: 10px;
+}
+.button_box button.payment_cancle {
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 7px 20px;
+}
+
+/* final_payment_modal 끝 */
+
+/* book_comple 시작 */
+
+.bookcomple_head_title {
+    width: 100%;
+    background-color: #000;
+    text-align: center;
+    letter-spacing: 0.8em;
+    color: #fff;
+    padding: 14px 0;
+    font-size: 20px;
+}
+
+.bookcomple_box {
+    padding: 30px;
+    border-bottom: 1px solid #bebebe;
+    margin-bottom: 40px;
+}
+
+.bookcomple_box .bookcomple_main_title {
+    font-size: 28px;
+    margin-bottom: 50px;
+}
+
+.bookcomple_info_box {
+    display: flex;
+    align-items: center;
+}
+
+.bookcomple_box img {
+    width: 150px;
+    height: 220px;
+    margin-right: 40px;
+}
+
+.bookcomple_box .bookcomple_mov_info_list {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.bookcomple_mov_txt {
+    width: 50px;
+    margin-right: 30px;
+}
+
+.bookcomple_mov_info {
+    font-weight: bold;
+}
+
+.bookcomple_con_box .go_mainpage_box {
+    text-align: center;
+}
+
+.bookcomple_con_box a.go_mainpage_btn {
+    padding: 12px 30px;
+    background-color: #EB093B;
+}
+
+/* book_comple 끝 */
+
+/* 노트북 시작  1024 */
+
+@media screen and (max-width: 1300px) {
+
+    .screen_box {
+        padding: 20px;
+    }
+
+    .book_rs_box {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .movie_info {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-right: 15px;
+    }
+
+    .movie_info .movie_thumnail {
+        width: 120px;
+        height: 160px;
+        margin-right: 0px;
+    }
+    
+    .movie_info .movie_title input {
+        font-size: 15px;
+    }
+
+    .date_info .book_txt {
+        width: 50px;
+    }
+
+    .seat_info .seat_title, .pay_info .pay_title {
+        font-size: 20px;
+    }
+
+    .seat_info, .pay_info, .go_select_seat {
+        padding-left: 20px;
+        width: 150px;
+    }
+
+    .go_select_seat button {
+        height: 60%;
+        font-size: 22px;
+    }
+
+    .go_select_seat a {
+        height: 60%;
+        font-size: 22px;
+    }
+
+    /* bookmainpage 끝 */
+
+}
+
+/* 노트북 끝 */
+
+/* 테블릿 시작 768 */
+
+@media screen and (max-width: 1023px) {
+
+}
+
+/* 테블릿 끝 */
+
+
+/* 모바일 575 시작 */
+
+@media screen and (max-width: 767px) {
+
+}
+
+/* 모바일 575 끝 */
+
+/* 모바일 375 시작 */
+
+@media screen and (max-width: 524px) {
+
+}
+
+/* 모바일 375 끝 */
+
+/* 모바일 320 시작 */
+
+@media screen and (max-width: 374px) {
+
+}
+
+/* 모바일 320 끝 */

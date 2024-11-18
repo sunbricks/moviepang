@@ -1,0 +1,773 @@
+/* main1 home 시작 */
+
+    .movie_rate_list img {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+#home {
+    padding-top: 250px;
+    background-color: #333;
+}
+
+.main1 .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.main1 .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main1 .swiper-slide img {
+    display: block;
+    object-fit: cover;
+    width: 1100px;
+    height: 100%;
+}
+
+.main1 .ta_main_view {
+    display: none !important;
+}
+
+.main1 .mo_main_view {
+    display: none !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    display: none !important;
+}
+
+/* main1 home 끝 */
+
+
+/* main2 movie 시작 */
+
+.main2 ul.movie_tabs {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.main2 ul.movie_tabs li {
+    color: #fff;
+    width: 150px;
+    text-align: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.main2 ul.movie_tabs li.list{
+    background-color: #EB093B;
+    border-radius: 10px;
+}
+
+.main2 .tab-content {
+    display: none;
+}
+
+.main2 .tab-content.list{
+    display: inherit;
+}
+
+.main2 .movie_rate_list_box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main2 .movie_rate_list {
+    
+}
+
+.main2 .movie_rate_list img {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.main2 .m_name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.main2 .m_genre {
+    margin-right: 15px;
+}
+
+.main2 .m_open {
+    margin-right: 10px;
+}
+
+.main2 .m_op_date {
+    color: #EB093B;
+    font-weight: bold;
+}
+
+.main2 .movie_more_box {
+    text-align: center;
+}
+
+/* main2 movie 끝 */
+
+/* main3 event 시작 */
+
+.event_list_box {}
+.event_list_box ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.event_list_box ul li {}
+
+.event_list_box ul li .ev_thumnail {
+    width: 350px;
+    height: 240px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.event_list_box ul li .ev_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 320px;
+}
+
+/* main3 event 시작 */
+
+/* main4 ev banner 시작 */
+
+.main4 {
+    padding: 100px 0;
+    width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main4 a {
+    display: none;
+}
+
+.main4 img {
+    width: 100%;
+}
+
+/* main4 ev banner 끝 */
+
+/* main5 recommend 시작 */
+
+.main5 .recommend_list_box {}
+
+.main5 .recommend_list_box ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main5 .recommend_list_box ul li {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.main5 .recommend_list_box ul li:first-child {
+    margin-left: 0px;
+}
+
+.main5 .recommend_list_box ul li:last-child {
+    margin-right: 0px;
+}
+
+.main5 .recommend_movie_thumnail {
+    width: 100%;
+    margin-bottom: 10px
+}
+
+.main5 .m_name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.main5 .m_genre {
+    margin-right: 15px;
+}
+
+/* main5 recommend 끝 */
+
+
+/* main6 annoboard 시작 */
+
+.main6 .annoboard_view_box {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 80px;
+}
+
+.main6 .swiper {
+    width: 100%;
+    height: 40px;
+}
+
+.main6 .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main6 .swiper-slide a {
+    display: flex;
+}
+
+.main6 .swiper-slide .anno_title {
+    text-align: left;
+    width: 700px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.main6 .annoboard_view_box .annoboard_more {
+    font-weight: bold;
+    padding-left: 40px;
+    border-left: 1px solid #fff;
+}
+
+.main6 .cs_btn_list_box {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.main6 .cs_btn_list_box img {
+    margin-bottom: 20px;
+}
+
+.main6 .cs_btn_list_box p {
+    font-size: 18px;
+    font-weight: bold;
+}
+/* main6 annoboard 끝 */
+
+/* 노트북 시작  1024 */
+@media screen and (max-width: 1300px) {
+    /* main1 home 시작 */
+
+    #home {
+        padding-top: 150px;
+    }
+
+    .main1 .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .main1 .swiper-slide img {
+        width: 1024px;
+    }
+
+    /* main1 home 끝 */
+
+    /* main2 movie 시작 */
+
+    .main2 ul.movie_tabs {
+        margin-bottom: 30px;
+    }
+
+    .main2 ul.movie_tabs li {
+        width: 120px;
+    }
+
+    .main2 .movie_rate_list img {
+        width: 170px;
+        margin-bottom: 20px;
+    }
+
+    .main2 .m_name {
+        font-size: 16px;
+    }
+
+    .main2 .m_op_date {
+        color: #EB093B;
+        font-weight: bold;
+    }
+
+    .main2 .movie_more_box {
+        text-align: center;
+    }
+
+    /* main2 movie 끝 */
+
+    /* main3 event 시작 */
+
+    .event_list_box ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .event_list_box ul li {
+        width: 300px;
+    }
+
+    .event_list_box ul li .ev_thumnail {
+        width: 300px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .event_list_box ul li .ev_title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 300px;
+    }
+
+    /* main3 event 시작 */
+
+    /* main4 ev banner 시작 */
+
+    .main4 {
+        padding: 100px 0;
+        width: 100%;
+    }
+
+    .main4 a {
+        display: none;
+    }
+
+    /* main4 ev banner 끝 */
+
+    /* main5 recommend 시작 */
+
+    .main5 .recommend_list_box {}
+
+    .main5 .recommend_list_box ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main5 .recommend_list_box ul li {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .main5 .recommend_movie_thumnail {
+        width: 170px;
+    }
+
+    /* main5 recommend 끝 */
+
+    /* main6 annoboard 시작 */
+
+    .main6 .swiper-slide .anno_title {
+        width: 600px;
+    }
+
+    .main6 .annoboard_view_box .annoboard_more {
+        padding-left: 20px;
+    }
+
+    .main6 .cs_btn_list_box {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .main6 .cs_btn_list_box img {
+        width: 60px;
+    }
+
+    /* main6 annoboard 끝 */
+
+}
+/* 노트북 끝 */
+
+
+/* 테블릿 시작 768 */
+@media screen and (max-width: 1023px) {
+    /* main1 home 시작 */
+
+    #home {
+        padding-top: 60px;
+    }
+
+    .main1 .swiper-slide img {
+        width: 100%;
+    }
+
+    .main1 .pc_main_view {
+        display: none !important;
+    }
+
+    .main1 .ta_main_view {
+        display: block !important;
+    }
+
+    /* main1 home 끝 */
+
+    /* main2 movie 시작 */
+
+    .main2 .movie_rate_list img {
+        width: 140px;
+        margin-bottom: 10px;
+    }
+
+    .main2 .m_name {
+        font-size: 15px;
+    }
+
+    .main2 .m_genre, .main2 .m_open, .main2 .m_op_date {
+        font-size: 14px;
+    }
+
+    /* main2 movie 끝 */
+
+    /* main3 event 시작 */
+
+    .event_list_box ul li {
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .event_list_box ul li:first-child {
+        margin-left: 0px;
+    }
+
+    .event_list_box ul li:last-child {
+        margin-right: 0px;
+    }
+
+    .event_list_box ul li .ev_thumnail {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .event_list_box ul li .ev_title {
+        font-size: 16px;
+        width: 220px;
+    }
+
+    .event_list_box ul li .ev_date {
+        width: 100%;
+    }
+
+    /* main3 event 시작 */
+
+    /* main4 banner 시작 */
+    
+    .main4 {
+        padding: 50px 0;
+    }
+
+    /* main4 banner 끝 */
+
+    /* main5 recommend 시작 */
+
+    .main5 .recommend_list_box {}
+
+    .main5 .recommend_list_box ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main5 .recommend_list_box ul li {
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .main5 .recommend_movie_thumnail {
+        width: 100%;
+    }
+    
+    .main5 .m_name {
+        font-size: 15px;
+    }
+    
+    .main5 .m_genre, .main5 .m_rate {
+        font-size: 14px;
+    }
+
+    /* main5 recommend 끝 */
+
+    /* main6 annoboard 시작 */
+
+    .main6 .swiper-slide .anno_title {
+        width: 400px;
+    }
+
+    .main6 .cs_btn_list_box img {
+        width: 50px;
+    }
+
+    /* main6 annoboard 끝 */
+}
+/* 테블릿 끝 */
+
+/* 모바일 575 시작 */
+@media screen and (max-width: 767px) {
+    /* main2 movie 시작 */
+    .main2 .movie_rate_list img {
+        width: 150px;
+    }
+
+    /* main2 movie 끝 */
+
+    /* main3 event 시작 */
+
+    .event_list_box ul li {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .event_list_box ul li:nth-child(3) {
+        display: none;
+    }
+
+    .event_list_box ul li:nth-child(2) {
+        margin-right: 0px;
+    }
+
+    .event_list_box ul li .ev_thumnail {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* main3 event 시작 */
+
+    /* main4 banner 시작 */
+    
+    .main4 {
+        display: none;
+    }
+
+    /* main4 banner 끝 */
+
+    /* main5 recommend 시작 */
+
+    .main5 .recommend_list_box ul li {
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* main5 recommend 끝 */
+
+    /* main6 annoboard 시작 */
+
+    .main6 .annoboard_title h1{
+        font-size: 16px;
+    }
+
+    .main6 .swiper-slide .anno_title {
+        width: 300px;
+        text-align: center;
+        margin-right: 0px;
+        font-size: 16px;
+    }
+
+    .main6 .swiper-slide .anno_date {
+        font-size: 14px;
+    }
+
+    .main6 .swiper-slide a {
+        display: block;
+    }
+
+    .main6 .cs_btn_list_box img {
+        width: 50px;
+    }
+
+    .main6 .annoboard_view_box .annoboard_more {
+        font-size: 14px;
+    }
+
+    /* main6 annoboard 끝 */
+
+}
+/* 모바일 575 끝 */
+
+/* 모바일 375 시작 */
+
+@media screen and (max-width: 524px) {
+    /* main1 home 시작 */
+
+    #home {
+        padding-top: 60px;
+    }
+
+    .main1 .swiper-slide img {
+        width: 100%;
+    }
+
+    .main1 .ta_main_view {
+        display: none !important;
+    }
+
+    .main1 .mo_main_view {
+        display: block !important;
+    }
+
+    /* main1 home 끝 */
+
+    /* main2 movie 시작 */
+
+    .main2 ul.movie_tabs {
+        margin-bottom: 30px;
+    }
+
+    .main2 ul.movie_tabs li {
+        width: 50%;
+    }
+
+    .main2 .movie_rate_list img {
+        width: 100%;
+        height: 240px;
+        margin-bottom: 20px;
+    }
+
+    .main2 .m_name {
+        font-size: 22px;
+        margin-bottom: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 160px;
+    }
+    .main2 .m_genre {
+        margin-right: 20px;
+        font-size: 16px;
+    }
+    
+    .main2 .m_open {
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    
+    .main2 .m_op_date {
+        
+    }
+
+    /* main2 movie 끝 */
+
+    /* main3 event 시작 */
+
+    .event_list_box ul {
+        display: block;
+    }
+
+    .event_list_box ul li {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+
+    .event_list_box ul li:nth-child(3) {
+        display: block;
+    }
+
+    .event_list_box ul li .ev_thumnail {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .event_list_box ul li .ev_title {
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 280px;
+    }
+
+    /* main3 event 시작 */
+
+    /* main6 annoboard 시작 */
+
+    .main6 .annoboard_title h1{
+        display: none;
+    }
+
+    .main6 .swiper-slide {
+        width: 100%;
+    }
+
+    .main6 .swiper-slide .anno_title {
+        font-size: 17px;
+        width: 300px;
+    }
+
+    .main6 .swiper-slide .anno_date {
+        display: none;
+    }
+
+    .main6 .annoboard_view_box {
+        margin-bottom: 40px;
+    }
+
+    .main6 .cs_btn_list_box img {
+        width: 50px;
+    }
+
+    .main6 .annoboard_view_box .annoboard_more {
+        display: none;
+    }
+
+    /* main6 annoboard 끝 */
+
+
+}
+
+/* 모바일 375 끝 */
+
+/* 모바일 360 시작 */
+@media screen and (max-width: 374px) {
+    /* main2 movie 시작 */
+
+    .main2 ul.movie_tabs {
+        margin-bottom: 30px;
+    }
+
+    .main2 ul.movie_tabs li {
+        width: 50%;
+    }
+
+    .main2 .movie_rate_list img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main2 .m_name {
+        width: 280px;
+    }
+    .main2 .m_genre {
+        margin-right: 20px;
+        font-size: 16px;
+    }
+    
+    .main2 .m_open {
+        margin-right: 10px;
+        font-size: 15px;
+    }
+
+    /* main2 movie 끝 */
+
+
+}
+/* 모바일 360 끝 */

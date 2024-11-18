@@ -1,0 +1,128 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+* {
+    font-family: "Pretendard";
+}
+
+.btn1 {
+    background-color: #000;
+    border: 1px solid #999;
+    color: #fff;
+    cursor: pointer;
+}
+.btn1:hover {}
+.btn2 {
+    border: none;
+    background-color: #EB093B;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+.btn2:hover {}
+
+input {
+    background-color: #333;
+    outline: none;
+    border: 1px solid #AFAFAF;
+    color: #fff;
+}
+
+input::placeholder {
+    color: #afafaf;
+}
+
+.pd_box {
+    padding: 250px 0 200px 0;
+}
+
+.inner {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.section_title {
+    font-size: 32px;
+    font-weight: bold;
+    
+}
+
+.main_title_box {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #EB093B;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.movie_more_btn {
+    font-weight: bold;
+    color: #999;
+}
+
+
+/* 노트북 시작  1024 */
+@media screen and (max-width: 1300px) {
+    .inner {
+        width: 960px;
+    }
+
+    .pd_box {
+        padding: 220px 0 200px 0;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+}
+/* 노트북 끝 */
+
+
+/* 테블릿 시작 768 */
+@media screen and (max-width: 1023px) {
+    .inner {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+}
+/* 테블릿 끝 */
+
+/* 모바일 575 시작 */
+@media screen and (max-width: 767px) {
+    .inner {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+}
+/* 모바일 575 끝 */
+
+/* 모바일 375 시작 */
+
+@media screen and (max-width: 524px) {
+    .section {
+        padding: 50px 0;
+    }
+}
+
+/* 모바일 375 끝 */
+
+/* 모바일 320 시작 */
+@media screen and (max-width: 374px) {
+
+}
+/* 모바일 320 끝 */

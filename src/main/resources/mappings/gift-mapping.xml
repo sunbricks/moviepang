@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="GiftDAO">
+    <resultMap type="giftdto" id="gift">
+        <id property="prd_serial" column="PRD_SERIAL" /> 
+        <result property="prd_name" column="PRD_NAME" />
+        <result property="gift_buyer" column="GIFT_BUYER" />
+        <result property="gift_owntel" column="GIFT_OWNTEL" />
+        <result property="prd_price" column="PRD_PRICE" />
+        <result property="gift_owner" column="GIFT_OWNER" />
+        <result property="prd_num" column="PRD_NUM" />
+        <result property="gift_date" column="GIFT_DATE" />
+        <result property="gift_buyertel" column="GIFT_BUYERTEL" />
+
+    </resultMap>
+    <insert id="insertGift" parameterType="giftdto">
+        INSERT INTO GIFT (PRD_NUM, PRD_NAME, GIFT_BUYER, GIFT_OWNTEL, PRD_PRICE, GIFT_OWNER, PRD_CNT, PRD_SERIAL, GIFT_BUYERTEL)
+        VALUES (#{prd_num}, #{prd_name}, #{gift_buyer}, #{gift_owntel}, #{prd_price}, #{gift_owner}, #{prd_cnt}, #{prd_serial}, #{gift_buyertel})
+    </insert>
+
+    
+   <delete id="deleteGift" parameterType="java.lang.String">
+       DELETE FROM gift WHERE prd_serial = #{prd_serial}
+    </delete>
+
+<select id="selectGift" resultMap="gift"> SELECT A.*, ROW_NUMBER() OVER() AS ROWNO FROM gift A WHERE 1 = 1 </select>
+
+</mapper>
+

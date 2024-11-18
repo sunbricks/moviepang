@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CartDAO">
+
+	<select id="getCartList"  resultType="cartVO">
+<!-- 		SELECT * FROM CART A, PRODUCT B WHERE A.CART = B.PRODUCT -->
+		SELECT A.MEM_ID, A.PRD_NUM, A.CART_ID, A.CART_COUNT, B.PRD_NAME, B.PRD_TYPE, 
+		B.PRD_PRICE, B.PRD_IMG
+		FROM CART A JOIN PRODUCT B
+		ON A.PRD_NUM = B.PRD_NUM
+		WHERE MEM_ID = #{mem_id}
+	</select>
+	
+	<select id="getCart" resultType="cartVO">
+		SELECT  DISTINCT prd_num, cart_count FROM CART WHERE PRD_NUM = #{prd_num} and mem_id = #{mem_id}
+		
+	</select>
+	
+	<insert id="insertCart">
+		INSERT INTO CART(MEM_ID, PRD_NUM ,
+		CART_COUNT) VALUES(#{mem_id},
+		#{prd_num}, #{cart_count} )
+	</insert>
+	
+	<update id="updateCart">
+		UPDATE CART SET CART_COUNT = #{cart_count} WHERE prd_num = #{prd_num} and mem_id = #{mem_id};
+		
+	</update>
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+		DELETE FROM CART WHERE CART_ID = #{cart_id}
+	</delete>
+	<!-- 카트 전체 삭제 -->
+	<delete id="deleteAllCart">
+		DELETE FROM CART WHERE MEM_ID = #{mem_id}
+	</delete>
+</mapper>

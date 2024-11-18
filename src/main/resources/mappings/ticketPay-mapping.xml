@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ticketPayDAO">
+
+	<select id="popularMovie" resultType="map">
+	    WITH most_popular_movie AS (
+	        SELECT 
+	            pay_MovName,
+	            COUNT(*) AS movie_count
+	        FROM 
+	            payments
+	        WHERE 
+	            pay_Status = '결제완료'
+	        GROUP BY 
+	            pay_MovName
+	        ORDER BY 
+	            movie_count DESC
+	        LIMIT 1
+	    )
+	    SELECT 
+	        m.mov_nm AS movieName,
+	        m.mov_post AS poster
+	    FROM 
+	        mov_movies m
+	    JOIN 
+	        most_popular_movie p ON m.mov_nm = p.pay_MovName
+	</select>
+
+
+
+	<!-- 주간 매출액 -->
+    <select id="selectWeeklyTicketSales" resultType="_int">
+        SELECT NVL(SUM(pay_payprice),0) AS total_weekly_sales
+		FROM payments
+		WHERE pay_Status = '결제완료'
+  		AND YEAR(pay_paymentdate) = YEAR(CURDATE())
+  		AND WEEK(pay_paymentdate, 1) = WEEK(CURDATE(), 1);
+    </select>
+    
+    <!-- 월간 매출액 -->
+    <select id="selectMonthlyTicketSales" resultType="_int">
+  		SELECT NVL(SUM(pay_payprice),0) AS total_monthly_sales
+		FROM payments
+		WHERE pay_Status = '결제완료'
+	    AND YEAR(pay_paymentdate) = YEAR(CURDATE())
+	    AND MONTH(pay_paymentdate) = MONTH(CURDATE());
+    </select>
+
+	<!-- 연간 매출액 -->
+	<select id="getYearTicketSales" resultType="int">
+        SELECT NVL(SUM(pay_payprice),0)
+		FROM payments
+		WHERE pay_Status = '결제완료'
+  		AND YEAR(pay_paymentdate) = YEAR(CURDATE());
+    </select>
+    
+    
+	<!-- 결제 취소를 위한 imp_uid -->
+   <select id="findImp_Uid" parameterType="ticketVO"
+      resultType="string">
+      SELECT IMP_UID FROM PAYMENTS WHERE PAY_TICID = #{tic_Id}
+   </select>
+
+
+	<!--취소된 티켓 정보 가져오기 -->
+	<select id="getCancledData" parameterType="ticketVO"
+		resultType="com.movie.pang.chart.canceledTicketVO">
+	<![CDATA[SELECT T.TIC_MOVNAME, T.TIC_WATDATE,T.TIC_WATTIME,T.TIC_CANCLEDDATE ,P.PAY_PAYPRICE FROM TICKETS T 
+	RIGHT OUTER JOIN PAYMENTS P ON T.TIC_ID = P.PAY_TICID
+	WHERE T.TIC_MEMNAME = #{tic_MemName} AND 
+	t.tic_memID = #{tic_MemId} AND 
+	t.TIC_WATDATE >= SYSDATE() AND 
+	t.TIC_STATUS ="canceled" 
+	ORDER BY TIC_WATDATE DESC]]>
+	</select>
+
+<select id="getPaymentsInfo" parameterType="ticketVO" resultType="ticketPayVO">
+	select * from payments where pay_TicID = #{tic_Id}
+</select>
+	<insert id="ticketPay" parameterType="ticketPayVO">
+		insert into payments values
+		(#{pay_Num},#{pay_ID},#{pay_TicID},#{pay_MemName},#{pay_MemPhoneNumber},#{pay_MovName},#{pay_PaymentDate},#{pay_DisPrice},#{pay_PayPrice},"결제완료",#{imp_uid},#{pay_method},#{pay_cancledDate})
+	</insert>
+
+<!-- PAYMENTS의 STATUS 취소 -->
+   <update id="changePay_Status" parameterType="ticketVO">
+   <![CDATA[UPDATE PAYMENTS
+   SET PAY_STATUS = "결제취소", PAY_CANCLEDDATE = SYSDATE()
+   WHERE PAY_TICID = #{tic_Id} and PAY_STATUS = "결제완료"]]>
+   </update>
+
+   <!-- TiCKETS의 TIC_Status 취소 -->
+   <update id="changeTic_Status" parameterType="ticketVO">
+      UPDATE TICKETS
+      SET TIC_STATUS = "canceled",TIC_CANCLEDDATE = SYSDATE()
+      WHERE TIC_ID = #{tic_Id} AND TIC_STATUS = 'active'
+   </update>
+
+	<select id="getPayNum" resultType="_int">
+		SELECT NVL(MAX(pay_NUM),0)
+		FROM PAYMENTS;
+	</select>
+
+	<!-- 영화 번호 가져오기 -->
+	<select id="getMovNum" resultType="_int"
+		parameterType="ticketPayVO">
+		SELECT MOV_NUM
+		FROM MOV_MOVIES WHERE MOV_NM = #{pay_MovName};
+	</select>
+
+	<!-- 사용쿠폰 -->
+	<update id="updateToUsedCoupon" parameterType="java.util.Map">
+		<if test="cup_num != null and cup_num != ''">
+			UPDATE COUPON_USER
+			SET CUP_TF = "사용",CUP_FDATE = SYSDATE()
+			WHERE CUP_NUM = #{cup_num}
+		</if>
+	</update>
+
+
+
+
+	<update id="updateToPoint" parameterType="java.util.Map">
+		<if test="usePoint != null and usePoint != ''">
+			UPDATE MEMBER
+			SET MEM_MP = MEM_MP - #{usePoint}
+			WHERE MEM_NM = #{pay_MemName} AND MEM_TEL = #{pay_MemPhoneNumber}
+		</if>
+	</update>
+
+	<!-- findTicketAge -->
+	<resultMap id="ticketPaymentsResultMap"
+		type="com.movie.pang.chart.ChartAgeVO">
+		<result column="MEM_ID" property="cha_memId" jdbcType="VARCHAR" />
+		<result column="MEM_NM" property="cha_memNm" jdbcType="VARCHAR" />
+		<result column="MEM_TEL" property="cha_memTel"
+			jdbcType="VARCHAR" />
+		<result column="MEM_BIR" property="cha_memBir"
+			jdbcType="VARCHAR" />
+		<result column="MEM_AGE" property="cha_memAge"
+			jdbcType="INTEGER" />
+		<result column="PAY_PAYMENTDATE" property="cha_payPaymentsDate"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 연령대별 예매율 -->
+	<select id="getTicketPaymentsAll" parameterType="java.util.Map"
+		resultMap="ticketPaymentsResultMap">
+   <![CDATA[SELECT M.MEM_ID, M.MEM_NM, M.MEM_TEL, M.MEM_BIR, ROUND(DATEDIFF(NOW(),M.MEM_BIR)/365) AS MEM_AGE, P.PAY_PAYMENTDATE
+   FROM MEMBER M 
+   RIGHT JOIN PAYMENTS P ON M.MEM_ID = P.PAY_memID
+   WHERE P.PAY_PAYMENTDATE >= #{sunDay} AND P.PAY_PAYMENTDATE <= #{saturDay} ]]>
+	</select>
+
+	<!-- 영화 평점과 예매율 -->
+    <select id="getTicketRatio" parameterType="java.util.Map"
+        resultType="com.movie.pang.chart.TicketRatioVO">
+   <![CDATA[SELECT t.tic_movName as movName, 
+   t.tic_movGenre as movGenre, 
+   NVL(sum(t.tic_watNum),0) as watNum, 
+   NVL(avg(r.REVIEW_RERATE),0) as movScore
+   FROM tickets t 
+   left JOIN REVIEWS r ON t.tic_movName = r.REVIEW_NAME
+   where t.TIC_watDate >= #{sunDay} and t.TIC_watDate <= #{saturDay}
+  group by t.tic_movName
+  order by watNum desc]]>
+    </select>
+	
+	<select id="checkMovTicket" resultType="_int">
+       SELECT COUNT(*) FROM PAYMENTS WHERE Pay_MemPhoneNumber = #{pay_MemPhoneNumber} AND Pay_MovName = #{pay_MovName}
+    </select>
+
+<!-- 포인트 결제 -->
+	<update id="payPoint" parameterType="memdto">
+		UPDATE MEMBER
+		SET MEM_MP = #{mem_mp}
+		WHERE MEM_NM = #{mem_nm} AND MEM_TEL = #{mem_tel}
+	</update>
+
+<!-- 포인트 결제 취소 -->
+	<update id="cancledPoint" parameterType="memdto">
+		UPDATE MEMBER
+		SET MEM_MP = #{mem_mp}
+		WHERE MEM_NM = #{mem_nm} AND MEM_TEL = #{mem_tel}
+	</update>
+
+
+
+</mapper>

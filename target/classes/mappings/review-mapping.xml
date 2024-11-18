@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewDAO">
+
+   <insert id="insertReview">
+      INSERT INTO REVIEWS
+      (REVIEW_NAME,REVIEW_REVIEW,
+      REVIEW_NICK,
+      REVIEW_RERATE,REVIEW_PAYCHECK,REVIEW_ID)
+      VALUES(
+      #{review_name},
+      #{review_review},
+      #{review_nick},
+      #{review_rerate},
+      now() - INTERVAL 1 DAY,
+      #{review_id})
+      <!-- WHERE REVIEW_PAYCHECK = #{review_paycheck} -->
+   </insert>
+
+   <update id="updateReview">
+      UPDATE REVIEWS SET
+      REVIEW_REVIEW = #{review_review},
+      REVIEW_DATE = now(),
+      REVIEW_RERATE = #{review_rerate}
+      WHERE REVIEW_NICK = #{review_nick}
+   </update>
+
+   <delete id="delReview">
+      DELETE FROM REVIEWS
+      WHERE REVIEW_NAME= #{review_name} AND REVIEW_ID = #{review_id}
+   </delete>
+   
+   <select id="checkReview" resultType="_int">
+      SELECT COUNT(*) 
+       FROM reviews
+       WHERE REVIEW_ID = #{review_id} AND REVIEW_NAME = #{review_name}
+   </select>
+<select id="getReviewList" resultType="reviewVO">
+    SELECT REVIEW_NICK, REVIEW_REVIEW, REVIEW_DATE, REVIEW_RERATE, REVIEW_ID
+   FROM REVIEWS
+   WHERE REVIEW_NAME = (SELECT MOV_NM FROM MOV_MOVIES WHERE MOV_NUM = #{mov_Num})
+   </select>
+</mapper>
